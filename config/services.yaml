@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # custom md5 encoder
+    geotag.md5password.encoder:
+        class: App\Services\CustomMd5PasswordEncoder
+
+    acme_api.event.authentication_success_listener:
+        class: App\Event\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }

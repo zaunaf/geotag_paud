@@ -1,0 +1,2940 @@
+Appdb:
+    foto:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: dbo
+        tableName: foto
+        tableCcName: Foto
+        tableFullName: foto
+        tableType: data
+        omClass: \Appdb\Foto
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: judul
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: false
+        relationOneToMany: {  }
+        relationManyToOne:
+            jenis_foto:
+                targetEntity: JenisFoto
+                mappedBy: foto
+                varEntity: jenis_foto
+            pengguna:
+                targetEntity: Pengguna
+                mappedBy: foto
+                varEntity: pengguna
+            sekolah:
+                targetEntity: Sekolah
+                mappedBy: foto
+                varEntity: sekolah
+        relationOneToOne: {  }
+        columns:
+            foto_id:
+                columnName: foto_id
+                columnCcName: FotoId
+                columnHumanName: Foto
+                columnHeader: Foto
+                fieldLabel: Foto
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            jenis_foto_id:
+                columnName: jenis_foto_id
+                columnCcName: JenisFotoId
+                columnHumanName: 'Jenis Foto'
+                columnHeader: 'Jenis Foto'
+                fieldLabel: 'Jenis Foto'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: jenis_foto
+                relatedTableCcName: JenisFoto
+                relatedTableFullName: ref.jenis_foto
+                relatedColumnName: jenis_foto_id
+                relatedColumnCcName: JenisFotoId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            sekolah_id:
+                columnName: sekolah_id
+                columnCcName: SekolahId
+                columnHumanName: Sekolah
+                columnHeader: Sekolah
+                fieldLabel: Sekolah
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: sekolah
+                relatedTableCcName: Sekolah
+                relatedTableFullName: sekolah
+                relatedColumnName: sekolah_id
+                relatedColumnCcName: SekolahId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            pengguna_id:
+                columnName: pengguna_id
+                columnCcName: PenggunaId
+                columnHumanName: Pengguna
+                columnHeader: Pengguna
+                fieldLabel: Pengguna
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: pengguna
+                relatedTableCcName: Pengguna
+                relatedTableFullName: pengguna
+                relatedColumnName: pengguna_id
+                relatedColumnCcName: PenggunaId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            judul:
+                columnName: judul
+                columnCcName: Judul
+                columnHumanName: Judul
+                columnHeader: Judul
+                fieldLabel: Judul
+                nativeType: string
+                type: VARCHAR
+                length: 250
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tgl_pengambilan:
+                columnName: tgl_pengambilan
+                columnCcName: TglPengambilan
+                columnHumanName: 'Tgl Pengambilan'
+                columnHeader: 'Tgl Pengambilan'
+                fieldLabel: 'Tgl Pengambilan'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tinggi_pixel:
+                columnName: tinggi_pixel
+                columnCcName: TinggiPixel
+                columnHumanName: 'Tinggi Pixel'
+                columnHeader: 'Tinggi Pixel'
+                fieldLabel: 'Tinggi Pixel'
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            lebar_pixel:
+                columnName: lebar_pixel
+                columnCcName: LebarPixel
+                columnHumanName: 'Lebar Pixel'
+                columnHeader: 'Lebar Pixel'
+                fieldLabel: 'Lebar Pixel'
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            ukuran:
+                columnName: ukuran
+                columnCcName: Ukuran
+                columnHumanName: Ukuran
+                columnHeader: Ukuran
+                fieldLabel: Ukuran
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            lintang:
+                columnName: lintang
+                columnCcName: Lintang
+                columnHumanName: Lintang
+                columnHeader: Lintang
+                fieldLabel: Lintang
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            bujur:
+                columnName: bujur
+                columnCcName: Bujur
+                columnHumanName: Bujur
+                columnHeader: Bujur
+                fieldLabel: Bujur
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tgl_pengiriman:
+                columnName: tgl_pengiriman
+                columnCcName: TglPengiriman
+                columnHumanName: 'Tgl Pengiriman'
+                columnHeader: 'Tgl Pengiriman'
+                fieldLabel: 'Tgl Pengiriman'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+    geotag:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: dbo
+        tableName: geotag
+        tableCcName: Geotag
+        tableFullName: geotag
+        tableType: data
+        omClass: \Appdb\Geotag
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: petugas_link
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: false
+        relationOneToMany: {  }
+        relationManyToOne:
+            pengguna:
+                targetEntity: Pengguna
+                mappedBy: geotag
+                varEntity: pengguna
+            sekolah:
+                targetEntity: Sekolah
+                mappedBy: geotag
+                varEntity: sekolah
+            status_geotag:
+                targetEntity: StatusGeotag
+                mappedBy: geotag
+                varEntity: status_geotag
+        relationOneToOne: {  }
+        columns:
+            geotag_id:
+                columnName: geotag_id
+                columnCcName: GeotagId
+                columnHumanName: Geotag
+                columnHeader: Geotag
+                fieldLabel: Geotag
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            sekolah_id:
+                columnName: sekolah_id
+                columnCcName: SekolahId
+                columnHumanName: Sekolah
+                columnHeader: Sekolah
+                fieldLabel: Sekolah
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: sekolah
+                relatedTableCcName: Sekolah
+                relatedTableFullName: sekolah
+                relatedColumnName: sekolah_id
+                relatedColumnCcName: SekolahId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            status_geotag_id:
+                columnName: status_geotag_id
+                columnCcName: StatusGeotagId
+                columnHumanName: 'Status Geotag'
+                columnHeader: 'Status Geotag'
+                fieldLabel: 'Status Geotag'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: status_geotag
+                relatedTableCcName: StatusGeotag
+                relatedTableFullName: ref.status_geotag
+                relatedColumnName: status_geotag_id
+                relatedColumnCcName: StatusGeotagId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            pengguna_id:
+                columnName: pengguna_id
+                columnCcName: PenggunaId
+                columnHumanName: Pengguna
+                columnHeader: Pengguna
+                fieldLabel: Pengguna
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: pengguna
+                relatedTableCcName: Pengguna
+                relatedTableFullName: pengguna
+                relatedColumnName: pengguna_id
+                relatedColumnCcName: PenggunaId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            tgl_pengambilan:
+                columnName: tgl_pengambilan
+                columnCcName: TglPengambilan
+                columnHumanName: 'Tgl Pengambilan'
+                columnHeader: 'Tgl Pengambilan'
+                fieldLabel: 'Tgl Pengambilan'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            lintang:
+                columnName: lintang
+                columnCcName: Lintang
+                columnHumanName: Lintang
+                columnHeader: Lintang
+                fieldLabel: Lintang
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            bujur:
+                columnName: bujur
+                columnCcName: Bujur
+                columnHumanName: Bujur
+                columnHeader: Bujur
+                fieldLabel: Bujur
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            petugas_link:
+                columnName: petugas_link
+                columnCcName: PetugasLink
+                columnHumanName: 'Petugas Link'
+                columnHeader: 'Petugas Link'
+                fieldLabel: 'Petugas Link'
+                nativeType: string
+                type: CHAR
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            sekolah_link:
+                columnName: sekolah_link
+                columnCcName: SekolahLink
+                columnHumanName: 'Sekolah Link'
+                columnHeader: 'Sekolah Link'
+                fieldLabel: 'Sekolah Link'
+                nativeType: string
+                type: CHAR
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tgl_pengiriman:
+                columnName: tgl_pengiriman
+                columnCcName: TglPengiriman
+                columnHumanName: 'Tgl Pengiriman'
+                columnHeader: 'Tgl Pengiriman'
+                fieldLabel: 'Tgl Pengiriman'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            status_tag:
+                columnName: status_tag
+                columnCcName: StatusTag
+                columnHumanName: 'Status Tag'
+                columnHeader: 'Status Tag'
+                fieldLabel: 'Status Tag'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+    jenis_foto:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: ref
+        tableName: jenis_foto
+        tableCcName: JenisFoto
+        tableFullName: ref.jenis_foto
+        tableType: reference
+        omClass: \Appdb\JenisFoto
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: nama_jenis_foto
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: false
+        relationOneToMany:
+            foto:
+                targetEntity: Foto
+                mappedBy: jenis_foto
+                varEntity: foto
+                accessible: true
+        relationManyToOne: {  }
+        relationOneToOne: {  }
+        columns:
+            jenis_foto_id:
+                columnName: jenis_foto_id
+                columnCcName: JenisFotoId
+                columnHumanName: 'Jenis Foto'
+                columnHeader: 'Jenis Foto'
+                fieldLabel: 'Jenis Foto'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama_jenis_foto:
+                columnName: nama_jenis_foto
+                columnCcName: NamaJenisFoto
+                columnHumanName: 'Nama Jenis Foto'
+                columnHeader: 'Nama Jenis Foto'
+                fieldLabel: 'Nama Jenis Foto'
+                nativeType: string
+                type: VARCHAR
+                length: 140
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            instruksi:
+                columnName: instruksi
+                columnCcName: Instruksi
+                columnHumanName: Instruksi
+                columnHeader: Instruksi
+                fieldLabel: Instruksi
+                nativeType: string
+                type: LONGVARCHAR
+                length: 2147483647
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: true
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            status_isian:
+                columnName: status_isian
+                columnCcName: StatusIsian
+                columnHumanName: 'Status Isian'
+                columnHeader: 'Status Isian'
+                fieldLabel: 'Status Isian'
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+    pengguna:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: dbo
+        tableName: pengguna
+        tableCcName: Pengguna
+        tableFullName: pengguna
+        tableType: data
+        omClass: \Appdb\Pengguna
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: username
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: true
+        relationOneToMany:
+            foto:
+                targetEntity: Foto
+                mappedBy: pengguna
+                varEntity: foto
+                accessible: true
+            geotag:
+                targetEntity: Geotag
+                mappedBy: pengguna
+                varEntity: geotag
+                accessible: true
+        relationManyToOne:
+            sekolah:
+                targetEntity: Sekolah
+                mappedBy: pengguna
+                varEntity: sekolah
+        relationOneToOne: {  }
+        columns:
+            pengguna_id:
+                columnName: pengguna_id
+                columnCcName: PenggunaId
+                columnHumanName: Pengguna
+                columnHeader: Pengguna
+                fieldLabel: Pengguna
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            sekolah_id:
+                columnName: sekolah_id
+                columnCcName: SekolahId
+                columnHumanName: Sekolah
+                columnHeader: Sekolah
+                fieldLabel: Sekolah
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: false
+                isForeignKey: true
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: sekolah
+                relatedTableCcName: Sekolah
+                relatedTableFullName: sekolah
+                relatedColumnName: sekolah_id
+                relatedColumnCcName: SekolahId
+                relatedColumnIsPrimaryKey: true
+                relatedTableHasCompositePrimaryKey: false
+                relatedType: many-to-one
+            username:
+                columnName: username
+                columnCcName: Username
+                columnHumanName: Username
+                columnHeader: Username
+                fieldLabel: Username
+                nativeType: string
+                type: VARCHAR
+                length: 60
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            password:
+                columnName: password
+                columnCcName: Password
+                columnHumanName: Password
+                columnHeader: Password
+                fieldLabel: Password
+                nativeType: string
+                type: VARCHAR
+                length: 50
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: true
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama:
+                columnName: nama
+                columnCcName: Nama
+                columnHumanName: Nama
+                columnHeader: Nama
+                fieldLabel: Nama
+                nativeType: string
+                type: VARCHAR
+                length: 100
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nip_nim:
+                columnName: nip_nim
+                columnCcName: NipNim
+                columnHumanName: 'Nip Nim'
+                columnHeader: 'Nip Nim'
+                fieldLabel: 'Nip Nim'
+                nativeType: string
+                type: VARCHAR
+                length: 18
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            jabatan_lembaga:
+                columnName: jabatan_lembaga
+                columnCcName: JabatanLembaga
+                columnHumanName: 'Jabatan Lembaga'
+                columnHeader: 'Jabatan Lembaga'
+                fieldLabel: 'Jabatan Lembaga'
+                nativeType: string
+                type: VARCHAR
+                length: 25
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            ym:
+                columnName: ym
+                columnCcName: Ym
+                columnHumanName: Ym
+                columnHeader: Ym
+                fieldLabel: Ym
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            skype:
+                columnName: skype
+                columnCcName: Skype
+                columnHumanName: Skype
+                columnHeader: Skype
+                fieldLabel: Skype
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            alamat:
+                columnName: alamat
+                columnCcName: Alamat
+                columnHumanName: Alamat
+                columnHeader: Alamat
+                fieldLabel: Alamat
+                nativeType: string
+                type: VARCHAR
+                length: 80
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            kode_wilayah:
+                columnName: kode_wilayah
+                columnCcName: KodeWilayah
+                columnHumanName: 'Kode Wilayah'
+                columnHeader: 'Kode Wilayah'
+                fieldLabel: 'Kode Wilayah'
+                nativeType: string
+                type: CHAR
+                length: 8
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            no_telepon:
+                columnName: no_telepon
+                columnCcName: NoTelepon
+                columnHumanName: 'No Telepon'
+                columnHeader: 'No Telepon'
+                fieldLabel: 'No Telepon'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            no_hp:
+                columnName: no_hp
+                columnCcName: NoHp
+                columnHumanName: 'No Hp'
+                columnHeader: 'No Hp'
+                fieldLabel: 'No Hp'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            aktif:
+                columnName: aktif
+                columnCcName: Aktif
+                columnHumanName: Aktif
+                columnHeader: Aktif
+                fieldLabel: Aktif
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            ptk_id:
+                columnName: ptk_id
+                columnCcName: PtkId
+                columnHumanName: Ptk
+                columnHeader: Ptk
+                fieldLabel: Ptk
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            peran_id:
+                columnName: peran_id
+                columnCcName: PeranId
+                columnHumanName: Peran
+                columnHeader: Peran
+                fieldLabel: Peran
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            lembaga_id:
+                columnName: lembaga_id
+                columnCcName: LembagaId
+                columnHumanName: Lembaga
+                columnHeader: Lembaga
+                fieldLabel: Lembaga
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            yayasan_id:
+                columnName: yayasan_id
+                columnCcName: YayasanId
+                columnHumanName: Yayasan
+                columnHeader: Yayasan
+                fieldLabel: Yayasan
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            la_id:
+                columnName: la_id
+                columnCcName: LaId
+                columnHumanName: La
+                columnHeader: La
+                fieldLabel: La
+                nativeType: string
+                type: CHAR
+                length: 5
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            dudi_id:
+                columnName: dudi_id
+                columnCcName: DudiId
+                columnHumanName: Dudi
+                columnHeader: Dudi
+                fieldLabel: Dudi
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            create_date:
+                columnName: create_date
+                columnCcName: CreateDate
+                columnHumanName: 'Create Date'
+                columnHeader: 'Create Date'
+                fieldLabel: 'Create Date'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            roles:
+                columnName: roles
+                columnCcName: Roles
+                columnHumanName: Roles
+                columnHeader: Roles
+                fieldLabel: Roles
+                nativeType: string
+                type: LONGVARCHAR
+                length: 2147483647
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: true
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            last_update:
+                columnName: last_update
+                columnCcName: LastUpdate
+                columnHumanName: 'Last Update'
+                columnHeader: 'Last Update'
+                fieldLabel: 'Last Update'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            soft_delete:
+                columnName: soft_delete
+                columnCcName: SoftDelete
+                columnHumanName: 'Soft Delete'
+                columnHeader: 'Soft Delete'
+                fieldLabel: 'Soft Delete'
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            last_sync:
+                columnName: last_sync
+                columnCcName: LastSync
+                columnHumanName: 'Last Sync'
+                columnHeader: 'Last Sync'
+                fieldLabel: 'Last Sync'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            updater_id:
+                columnName: updater_id
+                columnCcName: UpdaterId
+                columnHumanName: Updater
+                columnHeader: Updater
+                fieldLabel: Updater
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+    sekolah:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: dbo
+        tableName: sekolah
+        tableCcName: Sekolah
+        tableFullName: sekolah
+        tableType: data
+        omClass: \Appdb\Sekolah
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: nama
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: false
+        relationOneToMany:
+            foto:
+                targetEntity: Foto
+                mappedBy: sekolah
+                varEntity: foto
+                accessible: true
+            geotag:
+                targetEntity: Geotag
+                mappedBy: sekolah
+                varEntity: geotag
+                accessible: true
+            pengguna:
+                targetEntity: Pengguna
+                mappedBy: sekolah
+                varEntity: pengguna
+                accessible: true
+        relationManyToOne: {  }
+        relationOneToOne: {  }
+        columns:
+            sekolah_id:
+                columnName: sekolah_id
+                columnCcName: SekolahId
+                columnHumanName: Sekolah
+                columnHeader: Sekolah
+                fieldLabel: Sekolah
+                nativeType: uuid
+                type: UUID
+                length: 16
+                isUuid: true
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama:
+                columnName: nama
+                columnCcName: Nama
+                columnHumanName: Nama
+                columnHeader: Nama
+                fieldLabel: Nama
+                nativeType: string
+                type: VARCHAR
+                length: 100
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama_nomenklatur:
+                columnName: nama_nomenklatur
+                columnCcName: NamaNomenklatur
+                columnHumanName: 'Nama Nomenklatur'
+                columnHeader: 'Nama Nomenklatur'
+                fieldLabel: 'Nama Nomenklatur'
+                nativeType: string
+                type: VARCHAR
+                length: 100
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nss:
+                columnName: nss
+                columnCcName: Nss
+                columnHumanName: Nss
+                columnHeader: Nss
+                fieldLabel: Nss
+                nativeType: string
+                type: CHAR
+                length: 12
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            npsn:
+                columnName: npsn
+                columnCcName: Npsn
+                columnHumanName: Npsn
+                columnHeader: Npsn
+                fieldLabel: Npsn
+                nativeType: string
+                type: CHAR
+                length: 8
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            bentuk_pendidikan_id:
+                columnName: bentuk_pendidikan_id
+                columnCcName: BentukPendidikanId
+                columnHumanName: 'Bentuk Pendidikan'
+                columnHeader: 'Bentuk Pendidikan'
+                fieldLabel: 'Bentuk Pendidikan'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            alamat_jalan:
+                columnName: alamat_jalan
+                columnCcName: AlamatJalan
+                columnHumanName: 'Alamat Jalan'
+                columnHeader: 'Alamat Jalan'
+                fieldLabel: 'Alamat Jalan'
+                nativeType: string
+                type: VARCHAR
+                length: 80
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            rt:
+                columnName: rt
+                columnCcName: Rt
+                columnHumanName: Rt
+                columnHeader: Rt
+                fieldLabel: Rt
+                nativeType: string
+                type: NUMERIC
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            rw:
+                columnName: rw
+                columnCcName: Rw
+                columnHumanName: Rw
+                columnHeader: Rw
+                fieldLabel: Rw
+                nativeType: string
+                type: NUMERIC
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama_dusun:
+                columnName: nama_dusun
+                columnCcName: NamaDusun
+                columnHumanName: 'Nama Dusun'
+                columnHeader: 'Nama Dusun'
+                fieldLabel: 'Nama Dusun'
+                nativeType: string
+                type: VARCHAR
+                length: 60
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            desa_kelurahan:
+                columnName: desa_kelurahan
+                columnCcName: DesaKelurahan
+                columnHumanName: 'Desa Kelurahan'
+                columnHeader: 'Desa Kelurahan'
+                fieldLabel: 'Desa Kelurahan'
+                nativeType: string
+                type: VARCHAR
+                length: 60
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            kode_wilayah:
+                columnName: kode_wilayah
+                columnCcName: KodeWilayah
+                columnHumanName: 'Kode Wilayah'
+                columnHeader: 'Kode Wilayah'
+                fieldLabel: 'Kode Wilayah'
+                nativeType: string
+                type: CHAR
+                length: 8
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            kode_pos:
+                columnName: kode_pos
+                columnCcName: KodePos
+                columnHumanName: 'Kode Pos'
+                columnHeader: 'Kode Pos'
+                fieldLabel: 'Kode Pos'
+                nativeType: string
+                type: CHAR
+                length: 5
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            lintang:
+                columnName: lintang
+                columnCcName: Lintang
+                columnHumanName: Lintang
+                columnHeader: Lintang
+                fieldLabel: Lintang
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            bujur:
+                columnName: bujur
+                columnCcName: Bujur
+                columnHumanName: Bujur
+                columnHeader: Bujur
+                fieldLabel: Bujur
+                nativeType: string
+                type: NUMERIC
+                length: 13
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nomor_telepon:
+                columnName: nomor_telepon
+                columnCcName: NomorTelepon
+                columnHumanName: 'Nomor Telepon'
+                columnHeader: 'Nomor Telepon'
+                fieldLabel: 'Nomor Telepon'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nomor_fax:
+                columnName: nomor_fax
+                columnCcName: NomorFax
+                columnHumanName: 'Nomor Fax'
+                columnHeader: 'Nomor Fax'
+                fieldLabel: 'Nomor Fax'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            email:
+                columnName: email
+                columnCcName: Email
+                columnHumanName: Email
+                columnHeader: Email
+                fieldLabel: Email
+                nativeType: string
+                type: VARCHAR
+                length: 60
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: true
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            website:
+                columnName: website
+                columnCcName: Website
+                columnHumanName: Website
+                columnHeader: Website
+                fieldLabel: Website
+                nativeType: string
+                type: VARCHAR
+                length: 100
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            kebutuhan_khusus_id:
+                columnName: kebutuhan_khusus_id
+                columnCcName: KebutuhanKhususId
+                columnHumanName: 'Kebutuhan Khusus'
+                columnHeader: 'Kebutuhan Khusus'
+                fieldLabel: 'Kebutuhan Khusus'
+                nativeType: int
+                type: INTEGER
+                length: 4
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            status_sekolah:
+                columnName: status_sekolah
+                columnCcName: StatusSekolah
+                columnHumanName: 'Status Sekolah'
+                columnHeader: 'Status Sekolah'
+                fieldLabel: 'Status Sekolah'
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            sk_pendirian_sekolah:
+                columnName: sk_pendirian_sekolah
+                columnCcName: SkPendirianSekolah
+                columnHumanName: 'Sk Pendirian Sekolah'
+                columnHeader: 'Sk Pendirian Sekolah'
+                fieldLabel: 'Sk Pendirian Sekolah'
+                nativeType: string
+                type: VARCHAR
+                length: 80
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tanggal_sk_pendirian:
+                columnName: tanggal_sk_pendirian
+                columnCcName: TanggalSkPendirian
+                columnHumanName: 'Tanggal Sk Pendirian'
+                columnHeader: 'Tanggal Sk Pendirian'
+                fieldLabel: 'Tanggal Sk Pendirian'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            status_kepemilikan_id:
+                columnName: status_kepemilikan_id
+                columnCcName: StatusKepemilikanId
+                columnHumanName: 'Status Kepemilikan'
+                columnHeader: 'Status Kepemilikan'
+                fieldLabel: 'Status Kepemilikan'
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            yayasan_id:
+                columnName: yayasan_id
+                columnCcName: YayasanId
+                columnHumanName: Yayasan
+                columnHeader: Yayasan
+                fieldLabel: Yayasan
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            sk_izin_operasional:
+                columnName: sk_izin_operasional
+                columnCcName: SkIzinOperasional
+                columnHumanName: 'Sk Izin Operasional'
+                columnHeader: 'Sk Izin Operasional'
+                fieldLabel: 'Sk Izin Operasional'
+                nativeType: string
+                type: VARCHAR
+                length: 80
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            tanggal_sk_izin_operasional:
+                columnName: tanggal_sk_izin_operasional
+                columnCcName: TanggalSkIzinOperasional
+                columnHumanName: 'Tanggal Sk Izin Operasional'
+                columnHeader: 'Tanggal Sk Izin Operasional'
+                fieldLabel: 'Tanggal Sk Izin Operasional'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            no_rekening:
+                columnName: no_rekening
+                columnCcName: NoRekening
+                columnHumanName: 'No Rekening'
+                columnHeader: 'No Rekening'
+                fieldLabel: 'No Rekening'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama_bank:
+                columnName: nama_bank
+                columnCcName: NamaBank
+                columnHumanName: 'Nama Bank'
+                columnHeader: 'Nama Bank'
+                fieldLabel: 'Nama Bank'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            cabang_kcp_unit:
+                columnName: cabang_kcp_unit
+                columnCcName: CabangKcpUnit
+                columnHumanName: 'Cabang Kcp Unit'
+                columnHeader: 'Cabang Kcp Unit'
+                fieldLabel: 'Cabang Kcp Unit'
+                nativeType: string
+                type: VARCHAR
+                length: 60
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            rekening_atas_nama:
+                columnName: rekening_atas_nama
+                columnCcName: RekeningAtasNama
+                columnHumanName: 'Rekening Atas Nama'
+                columnHeader: 'Rekening Atas Nama'
+                fieldLabel: 'Rekening Atas Nama'
+                nativeType: string
+                type: VARCHAR
+                length: 50
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            mbs:
+                columnName: mbs
+                columnCcName: Mbs
+                columnHumanName: Mbs
+                columnHeader: Mbs
+                fieldLabel: Mbs
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            luas_tanah_milik:
+                columnName: luas_tanah_milik
+                columnCcName: LuasTanahMilik
+                columnHumanName: 'Luas Tanah Milik'
+                columnHeader: 'Luas Tanah Milik'
+                fieldLabel: 'Luas Tanah Milik'
+                nativeType: string
+                type: NUMERIC
+                length: 9
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            luas_tanah_bukan_milik:
+                columnName: luas_tanah_bukan_milik
+                columnCcName: LuasTanahBukanMilik
+                columnHumanName: 'Luas Tanah Bukan Milik'
+                columnHeader: 'Luas Tanah Bukan Milik'
+                fieldLabel: 'Luas Tanah Bukan Milik'
+                nativeType: string
+                type: NUMERIC
+                length: 9
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            kode_registrasi:
+                columnName: kode_registrasi
+                columnCcName: KodeRegistrasi
+                columnHumanName: 'Kode Registrasi'
+                columnHeader: 'Kode Registrasi'
+                fieldLabel: 'Kode Registrasi'
+                nativeType: string
+                type: BIGINT
+                length: 8
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            npwp:
+                columnName: npwp
+                columnCcName: Npwp
+                columnHumanName: Npwp
+                columnHeader: Npwp
+                fieldLabel: Npwp
+                nativeType: string
+                type: CHAR
+                length: 15
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nm_wp:
+                columnName: nm_wp
+                columnCcName: NmWp
+                columnHumanName: 'Nm Wp'
+                columnHeader: 'Nm Wp'
+                fieldLabel: 'Nm Wp'
+                nativeType: string
+                type: VARCHAR
+                length: 100
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            flag:
+                columnName: flag
+                columnCcName: Flag
+                columnHumanName: Flag
+                columnHeader: Flag
+                fieldLabel: Flag
+                nativeType: string
+                type: CHAR
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            create_date:
+                columnName: create_date
+                columnCcName: CreateDate
+                columnHumanName: 'Create Date'
+                columnHeader: 'Create Date'
+                fieldLabel: 'Create Date'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            last_update:
+                columnName: last_update
+                columnCcName: LastUpdate
+                columnHumanName: 'Last Update'
+                columnHeader: 'Last Update'
+                fieldLabel: 'Last Update'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            soft_delete:
+                columnName: soft_delete
+                columnCcName: SoftDelete
+                columnHumanName: 'Soft Delete'
+                columnHeader: 'Soft Delete'
+                fieldLabel: 'Soft Delete'
+                nativeType: string
+                type: NUMERIC
+                length: 3
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            last_sync:
+                columnName: last_sync
+                columnCcName: LastSync
+                columnHumanName: 'Last Sync'
+                columnHeader: 'Last Sync'
+                fieldLabel: 'Last Sync'
+                nativeType: string
+                type: TIMESTAMP
+                length: 16
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            updater_id:
+                columnName: updater_id
+                columnCcName: UpdaterId
+                columnHumanName: Updater
+                columnHeader: Updater
+                fieldLabel: Updater
+                nativeType: string
+                type: VARCHAR
+                length: 36
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+    status_geotag:
+        databaseName: appdb
+        databaseCcName: Appdb
+        schemaName: ref
+        tableName: status_geotag
+        tableCcName: StatusGeotag
+        tableFullName: ref.status_geotag
+        tableType: reference
+        omClass: \Appdb\StatusGeotag
+        rowCount: 0
+        compositePk: false
+        pkColumns: null
+        displayField: nama_status_geotag
+        createStaticCombo: true
+        createDynamicCombo: true
+        createGrid: true
+        createForm: true
+        isUserTable: false
+        relationOneToMany:
+            geotag:
+                targetEntity: Geotag
+                mappedBy: status_geotag
+                varEntity: geotag
+                accessible: true
+        relationManyToOne: {  }
+        relationOneToOne: {  }
+        columns:
+            status_geotag_id:
+                columnName: status_geotag_id
+                columnCcName: StatusGeotagId
+                columnHumanName: 'Status Geotag'
+                columnHeader: 'Status Geotag'
+                fieldLabel: 'Status Geotag'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: true
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: true
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
+            nama_status_geotag:
+                columnName: nama_status_geotag
+                columnCcName: NamaStatusGeotag
+                columnHumanName: 'Nama Status Geotag'
+                columnHeader: 'Nama Status Geotag'
+                fieldLabel: 'Nama Status Geotag'
+                nativeType: string
+                type: VARCHAR
+                length: 20
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: true
+                isLongText: false
+                isNumeric: false
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="appdb" defaultIdMethod="native" namespace="\Appdb" defaultPhpNamingMethod="underscore">
+  <table name="foto" idMethod="native" phpName="Foto" namespace="\Appdb">
+    <column name="foto_id" phpName="FotoId" type="CHAR" size="16" primaryKey="true" required="true"/>
+    <column name="jenis_foto_id" phpName="JenisFotoId" type="SMALLINT" size="2" scale="0" required="true"/>
+    <column name="sekolah_id" phpName="SekolahId" type="CHAR" size="16" required="true"/>
+    <column name="pengguna_id" phpName="PenggunaId" type="CHAR" size="16" required="true"/>
+    <column name="judul" phpName="Judul" type="VARCHAR" size="250"/>
+    <column name="tgl_pengambilan" phpName="TglPengambilan" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="tinggi_pixel" phpName="TinggiPixel" type="INTEGER" size="4" scale="0"/>
+    <column name="lebar_pixel" phpName="LebarPixel" type="INTEGER" size="4" scale="0"/>
+    <column name="ukuran" phpName="Ukuran" type="INTEGER" size="4" scale="0"/>
+    <column name="lintang" phpName="Lintang" type="NUMERIC" size="13" scale="7"/>
+    <column name="bujur" phpName="Bujur" type="NUMERIC" size="13" scale="7"/>
+    <column name="tgl_pengiriman" phpName="TglPengiriman" type="TIMESTAMP" size="16" scale="3"/>
+    <foreign-key foreignTable="jenis_foto" foreignSchema="ref" name="FK_FOTO_FOTO_JENI_JENIS_FO">
+      <reference local="jenis_foto_id" foreign="jenis_foto_id"/>
+    </foreign-key>
+    <foreign-key foreignTable="pengguna" name="FK_FOTO_PETUGAS_F_PENGGUNA">
+      <reference local="pengguna_id" foreign="pengguna_id"/>
+    </foreign-key>
+    <foreign-key foreignTable="sekolah" name="FK_FOTO_FOTO_SEKO_SEKOLAH">
+      <reference local="sekolah_id" foreign="sekolah_id"/>
+    </foreign-key>
+    <index name="foto_jenis_fk">
+      <index-column name="jenis_foto_id" size="2"/>
+    </index>
+    <index name="foto_sekolah_fk">
+      <index-column name="sekolah_id" size="16"/>
+    </index>
+  </table>
+  <table name="geotag" idMethod="native" phpName="Geotag" namespace="\Appdb">
+    <column name="geotag_id" phpName="GeotagId" type="CHAR" size="16" primaryKey="true" required="true"/>
+    <column name="sekolah_id" phpName="SekolahId" type="CHAR" size="16" required="true"/>
+    <column name="status_geotag_id" phpName="StatusGeotagId" type="SMALLINT" size="2" scale="0" required="true"/>
+    <column name="pengguna_id" phpName="PenggunaId" type="CHAR" size="16" required="true"/>
+    <column name="tgl_pengambilan" phpName="TglPengambilan" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="lintang" phpName="Lintang" type="NUMERIC" size="13" scale="7"/>
+    <column name="bujur" phpName="Bujur" type="NUMERIC" size="13" scale="7"/>
+    <column name="petugas_link" phpName="PetugasLink" type="CHAR" size="16"/>
+    <column name="sekolah_link" phpName="SekolahLink" type="CHAR" size="16"/>
+    <column name="tgl_pengiriman" phpName="TglPengiriman" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="status_tag" phpName="StatusTag" type="SMALLINT" size="2" scale="0"/>
+    <foreign-key foreignTable="pengguna" name="FK_GEOTAG_PETUGAS_G_PENGGUNA">
+      <reference local="pengguna_id" foreign="pengguna_id"/>
+    </foreign-key>
+    <foreign-key foreignTable="sekolah" name="FK_GEOTAG_GEOTAG_SE_SEKOLAH">
+      <reference local="sekolah_id" foreign="sekolah_id"/>
+    </foreign-key>
+    <foreign-key foreignTable="status_geotag" foreignSchema="ref" name="FK_GEOTAG_GEOTAG_ST_STATUS_G">
+      <reference local="status_geotag_id" foreign="status_geotag_id"/>
+    </foreign-key>
+    <index name="geotag_status_fk">
+      <index-column name="status_geotag_id" size="2"/>
+    </index>
+    <index name="petugas_geotag_fk">
+      <index-column name="pengguna_id" size="16"/>
+    </index>
+  </table>
+  <table name="jenis_foto" schema="ref" idMethod="native" phpName="JenisFoto" namespace="\Appdb">
+    <column name="jenis_foto_id" phpName="JenisFotoId" type="SMALLINT" size="2" scale="0" primaryKey="true" required="true"/>
+    <column name="nama_jenis_foto" phpName="NamaJenisFoto" type="VARCHAR" size="140"/>
+    <column name="instruksi" phpName="Instruksi" type="LONGVARCHAR" size="2147483647"/>
+    <column name="status_isian" phpName="StatusIsian" type="INTEGER" size="4" scale="0"/>
+  </table>
+  <table name="pengguna" idMethod="native" phpName="Pengguna" namespace="\Appdb">
+    <column name="pengguna_id" phpName="PenggunaId" type="CHAR" size="16" primaryKey="true" required="true"/>
+    <column name="sekolah_id" phpName="SekolahId" type="CHAR" size="16"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="60" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="50" required="true"/>
+    <column name="nama" phpName="Nama" type="VARCHAR" size="100" required="true"/>
+    <column name="nip_nim" phpName="NipNim" type="VARCHAR" size="18"/>
+    <column name="jabatan_lembaga" phpName="JabatanLembaga" type="VARCHAR" size="25"/>
+    <column name="ym" phpName="Ym" type="VARCHAR" size="20"/>
+    <column name="skype" phpName="Skype" type="VARCHAR" size="20"/>
+    <column name="alamat" phpName="Alamat" type="VARCHAR" size="80"/>
+    <column name="kode_wilayah" phpName="KodeWilayah" type="CHAR" size="8" required="true"/>
+    <column name="no_telepon" phpName="NoTelepon" type="VARCHAR" size="20"/>
+    <column name="no_hp" phpName="NoHp" type="VARCHAR" size="20"/>
+    <column name="aktif" phpName="Aktif" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="ptk_id" phpName="PtkId" type="VARCHAR" size="36"/>
+    <column name="peran_id" phpName="PeranId" type="INTEGER" size="4" scale="0" required="true"/>
+    <column name="lembaga_id" phpName="LembagaId" type="VARCHAR" size="36"/>
+    <column name="yayasan_id" phpName="YayasanId" type="VARCHAR" size="36"/>
+    <column name="la_id" phpName="LaId" type="CHAR" size="5"/>
+    <column name="dudi_id" phpName="DudiId" type="VARCHAR" size="36"/>
+    <column name="create_date" phpName="CreateDate" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="roles" phpName="Roles" type="LONGVARCHAR" size="2147483647"/>
+    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36" required="true"/>
+    <foreign-key foreignTable="sekolah" name="FK_PENGGUNA_USER_SEKO_SEKOLAH">
+      <reference local="sekolah_id" foreign="sekolah_id"/>
+    </foreign-key>
+    <index name="user_sekolah_fk">
+      <index-column name="sekolah_id" size="16"/>
+    </index>
+  </table>
+  <table name="sekolah" idMethod="native" phpName="Sekolah" namespace="\Appdb">
+    <column name="sekolah_id" phpName="SekolahId" type="CHAR" size="16" primaryKey="true" required="true"/>
+    <column name="nama" phpName="Nama" type="VARCHAR" size="100" required="true"/>
+    <column name="nama_nomenklatur" phpName="NamaNomenklatur" type="VARCHAR" size="100"/>
+    <column name="nss" phpName="Nss" type="CHAR" size="12"/>
+    <column name="npsn" phpName="Npsn" type="CHAR" size="8"/>
+    <column name="bentuk_pendidikan_id" phpName="BentukPendidikanId" type="SMALLINT" size="2" scale="0" required="true"/>
+    <column name="alamat_jalan" phpName="AlamatJalan" type="VARCHAR" size="80" required="true"/>
+    <column name="rt" phpName="Rt" type="NUMERIC" size="4" scale="0"/>
+    <column name="rw" phpName="Rw" type="NUMERIC" size="4" scale="0"/>
+    <column name="nama_dusun" phpName="NamaDusun" type="VARCHAR" size="60"/>
+    <column name="desa_kelurahan" phpName="DesaKelurahan" type="VARCHAR" size="60" required="true"/>
+    <column name="kode_wilayah" phpName="KodeWilayah" type="CHAR" size="8" required="true"/>
+    <column name="kode_pos" phpName="KodePos" type="CHAR" size="5"/>
+    <column name="lintang" phpName="Lintang" type="NUMERIC" size="13" scale="7"/>
+    <column name="bujur" phpName="Bujur" type="NUMERIC" size="13" scale="7"/>
+    <column name="nomor_telepon" phpName="NomorTelepon" type="VARCHAR" size="20"/>
+    <column name="nomor_fax" phpName="NomorFax" type="VARCHAR" size="20"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="60"/>
+    <column name="website" phpName="Website" type="VARCHAR" size="100"/>
+    <column name="kebutuhan_khusus_id" phpName="KebutuhanKhususId" type="INTEGER" size="4" scale="0" required="true"/>
+    <column name="status_sekolah" phpName="StatusSekolah" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="sk_pendirian_sekolah" phpName="SkPendirianSekolah" type="VARCHAR" size="80"/>
+    <column name="tanggal_sk_pendirian" phpName="TanggalSkPendirian" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="status_kepemilikan_id" phpName="StatusKepemilikanId" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="yayasan_id" phpName="YayasanId" type="VARCHAR" size="36"/>
+    <column name="sk_izin_operasional" phpName="SkIzinOperasional" type="VARCHAR" size="80"/>
+    <column name="tanggal_sk_izin_operasional" phpName="TanggalSkIzinOperasional" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="no_rekening" phpName="NoRekening" type="VARCHAR" size="20"/>
+    <column name="nama_bank" phpName="NamaBank" type="VARCHAR" size="20"/>
+    <column name="cabang_kcp_unit" phpName="CabangKcpUnit" type="VARCHAR" size="60"/>
+    <column name="rekening_atas_nama" phpName="RekeningAtasNama" type="VARCHAR" size="50"/>
+    <column name="mbs" phpName="Mbs" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="luas_tanah_milik" phpName="LuasTanahMilik" type="NUMERIC" size="9" scale="0" required="true"/>
+    <column name="luas_tanah_bukan_milik" phpName="LuasTanahBukanMilik" type="NUMERIC" size="9" scale="0" required="true"/>
+    <column name="kode_registrasi" phpName="KodeRegistrasi" type="BIGINT" size="8" scale="0"/>
+    <column name="npwp" phpName="Npwp" type="CHAR" size="15"/>
+    <column name="nm_wp" phpName="NmWp" type="VARCHAR" size="100"/>
+    <column name="flag" phpName="Flag" type="CHAR" size="3"/>
+    <column name="create_date" phpName="CreateDate" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0" required="true"/>
+    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3" required="true"/>
+    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36" required="true"/>
+  </table>
+  <table name="status_geotag" schema="ref" idMethod="native" phpName="StatusGeotag" namespace="\Appdb">
+    <column name="status_geotag_id" phpName="StatusGeotagId" type="SMALLINT" size="2" scale="0" primaryKey="true" required="true"/>
+    <column name="nama_status_geotag" phpName="NamaStatusGeotag" type="VARCHAR" size="20"/>
+  </table>
+</database>

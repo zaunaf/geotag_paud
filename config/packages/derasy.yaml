@@ -1,0 +1,18 @@
+derasy:
+  skip_schema:
+  skip_table:
+  skip_column:
+  reference_schema:
+    - ref
+  report_schema:
+  auth:
+    user_table: pengguna
+    username: email
+    password: password
+    roles:
+      - superadmin
+      - admin
+      - operator
+    default_role: operator
+  android_project_folder: ../android
+  isDebug: true
