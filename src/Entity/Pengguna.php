@@ -44,6 +44,11 @@ class Pengguna implements UserInterface, \Serializable
      */
     private $id;
 
+    /**
+     * @var uuid
+     * @ORM\Column(name="sekolah_id", type="guid")
+     */
+    private $sekolah_id;
 
     /**
      * @var Sekolah
@@ -310,6 +315,11 @@ class Pengguna implements UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getSekolahId()
+    {
+        return $this->sekolah_id;
     }
 
     public function getSekolah(): Sekolah

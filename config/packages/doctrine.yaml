@@ -9,6 +9,7 @@ doctrine:
             # collate: utf8mb4_unicode_ci
         # url: '%env(DATABASE_URL)%'
         driver: 'pdo_sqlsrv'
+        host: '10.18.2.3'
         dbname: 'geotag_paud'
         user: 'sa'
         password: '3d0mondostra\/4'

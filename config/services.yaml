@@ -30,6 +30,13 @@ services:
     geotag.md5password.encoder:
         class: App\Services\CustomMd5PasswordEncoder
 
+
+    app.initializer_listener:
+        class: App\Event\BeforeLoginListener
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: 9, method: onKernelRequest }
+
     acme_api.event.authentication_success_listener:
         class: App\Event\AuthenticationSuccessListener
         tags:
