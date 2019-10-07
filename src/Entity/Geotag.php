@@ -26,8 +26,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 class Geotag
 {
 
-
-
     /**
      * @var uuid
      *
@@ -39,39 +37,59 @@ class Geotag
      */
     private $id;
 
-
     /**
      * @var Sekolah
      *
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="geotags")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id")
-     * @Assert\NotNull
      * @Groups({"geotag"})
      */
     private $sekolah;
 
+    /**
+     * @var uuid
+     *
+     * @ORM\Column(name="sekolah_id", type="guid")
+     * @Assert\NotNull
+     * @Groups({"geotag"})
+     */
+    private $sekolah_id;
 
     /**
      * @var StatusGeotag
      *
      * @ORM\ManyToOne(targetEntity="StatusGeotag", inversedBy="geotags")
      * @ORM\JoinColumn(name="status_geotag_id", referencedColumnName="status_geotag_id")
-     * @Assert\NotNull
      * @Groups({"geotag"})
      */
     private $status_geotag;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status_geotag_id", type="smallint")
+     * @Assert\NotNull
+     * @Groups({"geotag"})
+     */
+    private $status_geotag_id;
 
     /**
      * @var Pengguna
      *
      * @ORM\ManyToOne(targetEntity="Pengguna", inversedBy="geotags")
      * @ORM\JoinColumn(name="pengguna_id", referencedColumnName="pengguna_id")
-     * @Assert\NotNull
      * @Groups({"geotag"})
      */
     private $pengguna;
 
+    /**
+     * @var uuid
+     *
+     * @ORM\Column(name="pengguna_id", type="guid")
+     * @Assert\NotNull
+     * @Groups({"geotag"})
+     */
+    private $pengguna_id;
 
     /**
      * @var string
@@ -81,7 +99,6 @@ class Geotag
      */
     private $tgl_pengambilan;
 
-
     /**
      * @var string
      *
@@ -89,7 +106,6 @@ class Geotag
      * @Groups({"geotag"})
      */
     private $lintang;
-
 
     /**
      * @var string
@@ -99,7 +115,6 @@ class Geotag
      */
     private $bujur;
 
-
     /**
      * @var string
      *
@@ -107,7 +122,6 @@ class Geotag
      * @Groups({"geotag"})
      */
     private $petugas_link;
-
 
     /**
      * @var string
@@ -117,7 +131,6 @@ class Geotag
      */
     private $sekolah_link;
 
-
     /**
      * @var string
      *
@@ -125,7 +138,6 @@ class Geotag
      * @Groups({"geotag"})
      */
     private $tgl_pengiriman;
-
 
     /**
      * @var int
@@ -135,17 +147,17 @@ class Geotag
      */
     private $status_tag;
 
-
     public function __construct() {
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function getSekolah(): Sekolah
@@ -159,6 +171,16 @@ class Geotag
         return $this;
     }
 
+    public function getSekolahId()
+    {
+        return $this->sekolah_id;
+    }
+
+    public function setSekolahId($sekolah_id)
+    {
+        $this->sekolah_id = $sekolah_id;
+    }
+
     public function getStatusGeotag(): StatusGeotag
     {
         return $this->status_geotag;
@@ -168,6 +190,16 @@ class Geotag
     {
         $this->status_geotag = $status_geotag;
         return $this;
+    }
+
+    public function getStatusGeotagId()
+    {
+        return $this->status_geotag_id;
+    }
+
+    public function setStatusGeotagId($status_geotag_id)
+    {
+        $this->status_geotag_id = $status_geotag_id;
     }
 
     public function getPengguna(): Pengguna
@@ -181,9 +213,14 @@ class Geotag
         return $this;
     }
 
-    public function setTglPengambilan($tgl_pengambilan)
+    public function getPenggunaId()
     {
-        $this->tgl_pengambilan = $tgl_pengambilan;
+        return $this->pengguna_id;
+    }
+
+    public function setPenggunaId($pengguna_id)
+    {
+        $this->pengguna_id = $pengguna_id;
     }
 
     public function getTglPengambilan()
@@ -191,9 +228,9 @@ class Geotag
         return $this->tgl_pengambilan;
     }
 
-    public function setLintang($lintang)
+    public function setTglPengambilan($tgl_pengambilan)
     {
-        $this->lintang = $lintang;
+        $this->tgl_pengambilan = $tgl_pengambilan;
     }
 
     public function getLintang()
@@ -201,9 +238,9 @@ class Geotag
         return $this->lintang;
     }
 
-    public function setBujur($bujur)
+    public function setLintang($lintang)
     {
-        $this->bujur = $bujur;
+        $this->lintang = $lintang;
     }
 
     public function getBujur()
@@ -211,9 +248,9 @@ class Geotag
         return $this->bujur;
     }
 
-    public function setPetugasLink($petugas_link)
+    public function setBujur($bujur)
     {
-        $this->petugas_link = $petugas_link;
+        $this->bujur = $bujur;
     }
 
     public function getPetugasLink()
@@ -221,9 +258,9 @@ class Geotag
         return $this->petugas_link;
     }
 
-    public function setSekolahLink($sekolah_link)
+    public function setPetugasLink($petugas_link)
     {
-        $this->sekolah_link = $sekolah_link;
+        $this->petugas_link = $petugas_link;
     }
 
     public function getSekolahLink()
@@ -231,9 +268,9 @@ class Geotag
         return $this->sekolah_link;
     }
 
-    public function setTglPengiriman($tgl_pengiriman)
+    public function setSekolahLink($sekolah_link)
     {
-        $this->tgl_pengiriman = $tgl_pengiriman;
+        $this->sekolah_link = $sekolah_link;
     }
 
     public function getTglPengiriman()
@@ -241,9 +278,9 @@ class Geotag
         return $this->tgl_pengiriman;
     }
 
-    public function setStatusTag($status_tag)
+    public function setTglPengiriman($tgl_pengiriman)
     {
-        $this->status_tag = $status_tag;
+        $this->tgl_pengiriman = $tgl_pengiriman;
     }
 
     public function getStatusTag()
@@ -251,5 +288,8 @@ class Geotag
         return $this->status_tag;
     }
 
-
+    public function setStatusTag($status_tag)
+    {
+        $this->status_tag = $status_tag;
+    }
 }

@@ -26,8 +26,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 class Foto
 {
 
-
-
     /**
      * @var uuid
      *
@@ -39,39 +37,59 @@ class Foto
      */
     private $id;
 
-
     /**
      * @var JenisFoto
      *
      * @ORM\ManyToOne(targetEntity="JenisFoto", inversedBy="fotos")
      * @ORM\JoinColumn(name="jenis_foto_id", referencedColumnName="jenis_foto_id")
-     * @Assert\NotNull
      * @Groups({"foto"})
      */
     private $jenis_foto;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="jenis_foto_id", type="smallint")
+     * @Assert\NotNull
+     * @Groups({"foto"})
+     */
+    private $jenis_foto_id;
 
     /**
      * @var Sekolah
      *
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="fotos")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id")
-     * @Assert\NotNull
      * @Groups({"foto"})
      */
     private $sekolah;
 
+    /**
+     * @var uuid
+     *
+     * @ORM\Column(name="sekolah_id", type="guid")
+     * @Assert\NotNull
+     * @Groups({"foto"})
+     */
+    private $sekolah_id;
 
     /**
      * @var Pengguna
      *
      * @ORM\ManyToOne(targetEntity="Pengguna", inversedBy="fotos")
      * @ORM\JoinColumn(name="pengguna_id", referencedColumnName="pengguna_id")
-     * @Assert\NotNull
      * @Groups({"foto"})
      */
     private $pengguna;
 
+    /**
+     * @var uuid
+     *
+     * @ORM\Column(name="pengguna_id", type="guid")
+     * @Assert\NotNull
+     * @Groups({"foto"})
+     */
+    private $pengguna_id;
 
     /**
      * @var string
@@ -81,7 +99,6 @@ class Foto
      */
     private $judul;
 
-
     /**
      * @var string
      *
@@ -89,7 +106,6 @@ class Foto
      * @Groups({"foto"})
      */
     private $tgl_pengambilan;
-
 
     /**
      * @var int
@@ -99,7 +115,6 @@ class Foto
      */
     private $tinggi_pixel;
 
-
     /**
      * @var int
      *
@@ -107,7 +122,6 @@ class Foto
      * @Groups({"foto"})
      */
     private $lebar_pixel;
-
 
     /**
      * @var int
@@ -117,7 +131,6 @@ class Foto
      */
     private $ukuran;
 
-
     /**
      * @var string
      *
@@ -125,7 +138,6 @@ class Foto
      * @Groups({"foto"})
      */
     private $lintang;
-
 
     /**
      * @var string
@@ -135,7 +147,6 @@ class Foto
      */
     private $bujur;
 
-
     /**
      * @var string
      *
@@ -144,17 +155,17 @@ class Foto
      */
     private $tgl_pengiriman;
 
-
     public function __construct() {
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function getJenisFoto(): JenisFoto
@@ -168,6 +179,16 @@ class Foto
         return $this;
     }
 
+    public function getJenisFotoId()
+    {
+        return $this->jenis_foto_id;
+    }
+
+    public function setJenisFotoId($jenis_foto_id)
+    {
+        $this->jenis_foto_id = $jenis_foto_id;
+    }
+
     public function getSekolah(): Sekolah
     {
         return $this->sekolah;
@@ -177,6 +198,16 @@ class Foto
     {
         $this->sekolah = $sekolah;
         return $this;
+    }
+
+    public function getSekolahId()
+    {
+        return $this->sekolah_id;
+    }
+
+    public function setSekolahId($sekolah_id)
+    {
+        $this->sekolah_id = $sekolah_id;
     }
 
     public function getPengguna(): Pengguna
@@ -190,9 +221,14 @@ class Foto
         return $this;
     }
 
-    public function setJudul($judul)
+    public function getPenggunaId()
     {
-        $this->judul = $judul;
+        return $this->pengguna_id;
+    }
+
+    public function setPenggunaId($pengguna_id)
+    {
+        $this->pengguna_id = $pengguna_id;
     }
 
     public function getJudul()
@@ -200,9 +236,9 @@ class Foto
         return $this->judul;
     }
 
-    public function setTglPengambilan($tgl_pengambilan)
+    public function setJudul($judul)
     {
-        $this->tgl_pengambilan = $tgl_pengambilan;
+        $this->judul = $judul;
     }
 
     public function getTglPengambilan()
@@ -210,9 +246,9 @@ class Foto
         return $this->tgl_pengambilan;
     }
 
-    public function setTinggiPixel($tinggi_pixel)
+    public function setTglPengambilan($tgl_pengambilan)
     {
-        $this->tinggi_pixel = $tinggi_pixel;
+        $this->tgl_pengambilan = $tgl_pengambilan;
     }
 
     public function getTinggiPixel()
@@ -220,9 +256,9 @@ class Foto
         return $this->tinggi_pixel;
     }
 
-    public function setLebarPixel($lebar_pixel)
+    public function setTinggiPixel($tinggi_pixel)
     {
-        $this->lebar_pixel = $lebar_pixel;
+        $this->tinggi_pixel = $tinggi_pixel;
     }
 
     public function getLebarPixel()
@@ -230,9 +266,9 @@ class Foto
         return $this->lebar_pixel;
     }
 
-    public function setUkuran($ukuran)
+    public function setLebarPixel($lebar_pixel)
     {
-        $this->ukuran = $ukuran;
+        $this->lebar_pixel = $lebar_pixel;
     }
 
     public function getUkuran()
@@ -240,9 +276,9 @@ class Foto
         return $this->ukuran;
     }
 
-    public function setLintang($lintang)
+    public function setUkuran($ukuran)
     {
-        $this->lintang = $lintang;
+        $this->ukuran = $ukuran;
     }
 
     public function getLintang()
@@ -250,9 +286,9 @@ class Foto
         return $this->lintang;
     }
 
-    public function setBujur($bujur)
+    public function setLintang($lintang)
     {
-        $this->bujur = $bujur;
+        $this->lintang = $lintang;
     }
 
     public function getBujur()
@@ -260,9 +296,9 @@ class Foto
         return $this->bujur;
     }
 
-    public function setTglPengiriman($tgl_pengiriman)
+    public function setBujur($bujur)
     {
-        $this->tgl_pengiriman = $tgl_pengiriman;
+        $this->bujur = $bujur;
     }
 
     public function getTglPengiriman()
@@ -270,5 +306,8 @@ class Foto
         return $this->tgl_pengiriman;
     }
 
-
+    public function setTglPengiriman($tgl_pengiriman)
+    {
+        $this->tgl_pengiriman = $tgl_pengiriman;
+    }
 }

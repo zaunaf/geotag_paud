@@ -26,8 +26,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 class StatusGeotag
 {
 
-
-
     /**
      * @var int
      *
@@ -38,7 +36,6 @@ class StatusGeotag
      */
     private $id;
 
-
     /**
      * @var string
      *
@@ -46,7 +43,6 @@ class StatusGeotag
      * @Groups({"status_geotag", "geotag"})
      */
     private $nama_status_geotag;
-
 
     /**
      * @var Geotag[] Available geotags for this status_geotag.
@@ -59,19 +55,15 @@ class StatusGeotag
     public function __construct() {
         $this->geotags = new ArrayCollection();
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setNamaStatusGeotag($nama_status_geotag)
+    public function setId($id)
     {
-        $this->nama_status_geotag = $nama_status_geotag;
+        $this->id = $id;
     }
 
     public function getNamaStatusGeotag()
@@ -79,5 +71,8 @@ class StatusGeotag
         return $this->nama_status_geotag;
     }
 
-
+    public function setNamaStatusGeotag($nama_status_geotag)
+    {
+        $this->nama_status_geotag = $nama_status_geotag;
+    }
 }

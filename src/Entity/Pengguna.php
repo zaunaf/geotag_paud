@@ -20,18 +20,16 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="pengguna")
- * @ApiResource(normalizationContext={"groups"={"pengguna"}})
+ * @ApiResource(normalizationContext={"groups"={"get"}})
  * @ApiFilter(OrderFilter::class, properties={"username", "password", "nama", "nip_nim", "jabatan_lembaga", "ym", "skype", "alamat", "kode_wilayah", "no_telepon", "no_hp", "aktif", "ptk_id", "peran_id", "lembaga_id", "yayasan_id", "la_id", "dudi_id", "roles", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"username":"partial", "password":"partial", "nama":"partial", "nip_nim":"partial", "jabatan_lembaga":"partial", "ym":"partial", "skype":"partial", "alamat":"partial", "kode_wilayah":"partial", "no_telepon":"partial", "no_hp":"partial", "aktif":"exact", "ptk_id":"partial", "peran_id":"exact", "lembaga_id":"partial", "yayasan_id":"partial", "la_id":"partial", "dudi_id":"partial", "roles":"partial", "soft_delete":"exact", "updater_id":"partial"})
  */
 class Pengguna implements UserInterface, \Serializable
 {
-
     const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_OPERATOR = 'ROLE_OPERATOR';
     const DEFAULT_ROLES = [self::ROLE_OPERATOR];
-
 
     /**
      * @var uuid
@@ -40,286 +38,259 @@ class Pengguna implements UserInterface, \Serializable
      * @ORM\Column(name="pengguna_id", type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $id;
-
-    /**
-     * @var uuid
-     * @ORM\Column(name="sekolah_id", type="guid")
-     */
-    private $sekolah_id;
+    public $id;
 
     /**
      * @var Sekolah
      *
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="penggunas")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id",  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $sekolah;
+    public $sekolah;
 
+    /**
+     * @var uuid
+     *
+     * @ORM\Column(name="sekolah_id", type="guid",  nullable=true)
+     * @Groups({"get"})
+     */
+    public $sekolah_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=60)
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $username;
-
+    public $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=50)
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $password;
-
+    public $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama", type="string", length=100)
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $nama;
-
+    public $nama;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nip_nim", type="string", length=18,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $nip_nim;
-
+    public $nip_nim;
 
     /**
      * @var string
      *
      * @ORM\Column(name="jabatan_lembaga", type="string", length=25,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $jabatan_lembaga;
-
+    public $jabatan_lembaga;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ym", type="string", length=20,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $ym;
-
+    public $ym;
 
     /**
      * @var string
      *
      * @ORM\Column(name="skype", type="string", length=20,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $skype;
-
+    public $skype;
 
     /**
      * @var string
      *
      * @ORM\Column(name="alamat", type="string", length=80,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $alamat;
-
+    public $alamat;
 
     /**
      * @var string
      *
      * @ORM\Column(name="kode_wilayah", type="string", length=8)
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $kode_wilayah;
-
+    public $kode_wilayah;
 
     /**
      * @var string
      *
      * @ORM\Column(name="no_telepon", type="string", length=20,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $no_telepon;
-
+    public $no_telepon;
 
     /**
      * @var string
      *
      * @ORM\Column(name="no_hp", type="string", length=20,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $no_hp;
-
+    public $no_hp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="aktif", type="string")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $aktif;
-
+    public $aktif;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ptk_id", type="string", length=36,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $ptk_id;
-
+    public $ptk_id;
 
     /**
      * @var int
      *
      * @ORM\Column(name="peran_id", type="integer")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $peran_id;
-
+    public $peran_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lembaga_id", type="string", length=36,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $lembaga_id;
-
+    public $lembaga_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="yayasan_id", type="string", length=36,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $yayasan_id;
-
+    public $yayasan_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="la_id", type="string", length=5,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $la_id;
-
+    public $la_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="dudi_id", type="string", length=36,  nullable=true)
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $dudi_id;
-
+    public $dudi_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="create_date", type="datetime")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $create_date;
-
+    public $create_date;
 
     /**
      * @var string
      *
      * @ORM\Column(type="simple_array", length=200)
-      * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $roles;
-
+    public $roles;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_update", type="datetime")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $last_update;
-
+    public $last_update;
 
     /**
      * @var string
      *
      * @ORM\Column(name="soft_delete", type="string")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $soft_delete;
-
+    public $soft_delete;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_sync", type="datetime")
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $last_sync;
-
+    public $last_sync;
 
     /**
      * @var string
      *
      * @ORM\Column(name="updater_id", type="string", length=36)
      * @Assert\NotNull
-     * @Groups({"pengguna", "foto", "geotag"})
+     * @Groups({"get"})
      */
-    private $updater_id;
-
+    public $updater_id;
 
     /**
      * @var Foto[] Available fotos for this pengguna.
      *
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="pengguna")
-     * @Groups({"pengguna"})
+     * @Groups({"get"})
      */
-    private $fotos;
+    public $fotos;
 
     /**
      * @var Geotag[] Available geotags for this pengguna.
      *
      * @ORM\OneToMany(targetEntity="Geotag", mappedBy="pengguna")
-     * @Groups({"pengguna"})
+     * @Groups({"get"})
      */
-    private $geotags;
+    public $geotags;
 
     public function __construct() {
         $this->fotos = new ArrayCollection();
         $this->geotags = new ArrayCollection();
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getSekolahId()
+    public function setId($id)
     {
-        return $this->sekolah_id;
+        $this->id = $id;
     }
 
     public function getSekolah(): Sekolah
@@ -333,9 +304,14 @@ class Pengguna implements UserInterface, \Serializable
         return $this;
     }
 
-    public function setUsername($username)
+    public function getSekolahId()
     {
-        $this->username = $username;
+        return $this->sekolah_id;
+    }
+
+    public function setSekolahId($sekolah_id)
+    {
+        $this->sekolah_id = $sekolah_id;
     }
 
     public function getUsername()
@@ -343,9 +319,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->username;
     }
 
-    public function setPassword($password)
+    public function setUsername($username)
     {
-        $this->password = $password;
+        $this->username = $username;
     }
 
     public function getPassword()
@@ -353,9 +329,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function setNama($nama)
+    public function setPassword($password)
     {
-        $this->nama = $nama;
+        $this->password = $password;
     }
 
     public function getNama()
@@ -363,9 +339,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->nama;
     }
 
-    public function setNipNim($nip_nim)
+    public function setNama($nama)
     {
-        $this->nip_nim = $nip_nim;
+        $this->nama = $nama;
     }
 
     public function getNipNim()
@@ -373,9 +349,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->nip_nim;
     }
 
-    public function setJabatanLembaga($jabatan_lembaga)
+    public function setNipNim($nip_nim)
     {
-        $this->jabatan_lembaga = $jabatan_lembaga;
+        $this->nip_nim = $nip_nim;
     }
 
     public function getJabatanLembaga()
@@ -383,9 +359,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->jabatan_lembaga;
     }
 
-    public function setYm($ym)
+    public function setJabatanLembaga($jabatan_lembaga)
     {
-        $this->ym = $ym;
+        $this->jabatan_lembaga = $jabatan_lembaga;
     }
 
     public function getYm()
@@ -393,9 +369,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->ym;
     }
 
-    public function setSkype($skype)
+    public function setYm($ym)
     {
-        $this->skype = $skype;
+        $this->ym = $ym;
     }
 
     public function getSkype()
@@ -403,9 +379,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->skype;
     }
 
-    public function setAlamat($alamat)
+    public function setSkype($skype)
     {
-        $this->alamat = $alamat;
+        $this->skype = $skype;
     }
 
     public function getAlamat()
@@ -413,9 +389,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->alamat;
     }
 
-    public function setKodeWilayah($kode_wilayah)
+    public function setAlamat($alamat)
     {
-        $this->kode_wilayah = $kode_wilayah;
+        $this->alamat = $alamat;
     }
 
     public function getKodeWilayah()
@@ -423,9 +399,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->kode_wilayah;
     }
 
-    public function setNoTelepon($no_telepon)
+    public function setKodeWilayah($kode_wilayah)
     {
-        $this->no_telepon = $no_telepon;
+        $this->kode_wilayah = $kode_wilayah;
     }
 
     public function getNoTelepon()
@@ -433,9 +409,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->no_telepon;
     }
 
-    public function setNoHp($no_hp)
+    public function setNoTelepon($no_telepon)
     {
-        $this->no_hp = $no_hp;
+        $this->no_telepon = $no_telepon;
     }
 
     public function getNoHp()
@@ -443,9 +419,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->no_hp;
     }
 
-    public function setAktif($aktif)
+    public function setNoHp($no_hp)
     {
-        $this->aktif = $aktif;
+        $this->no_hp = $no_hp;
     }
 
     public function getAktif()
@@ -453,9 +429,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->aktif;
     }
 
-    public function setPtkId($ptk_id)
+    public function setAktif($aktif)
     {
-        $this->ptk_id = $ptk_id;
+        $this->aktif = $aktif;
     }
 
     public function getPtkId()
@@ -463,9 +439,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->ptk_id;
     }
 
-    public function setPeranId($peran_id)
+    public function setPtkId($ptk_id)
     {
-        $this->peran_id = $peran_id;
+        $this->ptk_id = $ptk_id;
     }
 
     public function getPeranId()
@@ -473,9 +449,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->peran_id;
     }
 
-    public function setLembagaId($lembaga_id)
+    public function setPeranId($peran_id)
     {
-        $this->lembaga_id = $lembaga_id;
+        $this->peran_id = $peran_id;
     }
 
     public function getLembagaId()
@@ -483,9 +459,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->lembaga_id;
     }
 
-    public function setYayasanId($yayasan_id)
+    public function setLembagaId($lembaga_id)
     {
-        $this->yayasan_id = $yayasan_id;
+        $this->lembaga_id = $lembaga_id;
     }
 
     public function getYayasanId()
@@ -493,9 +469,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->yayasan_id;
     }
 
-    public function setLaId($la_id)
+    public function setYayasanId($yayasan_id)
     {
-        $this->la_id = $la_id;
+        $this->yayasan_id = $yayasan_id;
     }
 
     public function getLaId()
@@ -503,9 +479,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->la_id;
     }
 
-    public function setDudiId($dudi_id)
+    public function setLaId($la_id)
     {
-        $this->dudi_id = $dudi_id;
+        $this->la_id = $la_id;
     }
 
     public function getDudiId()
@@ -513,9 +489,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->dudi_id;
     }
 
-    public function setCreateDate($create_date)
+    public function setDudiId($dudi_id)
     {
-        $this->create_date = $create_date;
+        $this->dudi_id = $dudi_id;
     }
 
     public function getCreateDate()
@@ -523,9 +499,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->create_date;
     }
 
-    public function setRoles($roles)
+    public function setCreateDate($create_date)
     {
-        $this->roles = $roles;
+        $this->create_date = $create_date;
     }
 
     public function getRoles()
@@ -533,9 +509,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->roles;
     }
 
-    public function setLastUpdate($last_update)
+    public function setRoles($roles)
     {
-        $this->last_update = $last_update;
+        $this->roles = $roles;
     }
 
     public function getLastUpdate()
@@ -543,9 +519,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->last_update;
     }
 
-    public function setSoftDelete($soft_delete)
+    public function setLastUpdate($last_update)
     {
-        $this->soft_delete = $soft_delete;
+        $this->last_update = $last_update;
     }
 
     public function getSoftDelete()
@@ -553,9 +529,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->soft_delete;
     }
 
-    public function setLastSync($last_sync)
+    public function setSoftDelete($soft_delete)
     {
-        $this->last_sync = $last_sync;
+        $this->soft_delete = $soft_delete;
     }
 
     public function getLastSync()
@@ -563,9 +539,9 @@ class Pengguna implements UserInterface, \Serializable
         return $this->last_sync;
     }
 
-    public function setUpdaterId($updater_id)
+    public function setLastSync($last_sync)
     {
-        $this->updater_id = $updater_id;
+        $this->last_sync = $last_sync;
     }
 
     public function getUpdaterId()
@@ -573,6 +549,10 @@ class Pengguna implements UserInterface, \Serializable
         return $this->updater_id;
     }
 
+    public function setUpdaterId($updater_id)
+    {
+        $this->updater_id = $updater_id;
+    }
 
     public function getSalt()
     {

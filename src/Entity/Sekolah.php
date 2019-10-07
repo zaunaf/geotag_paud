@@ -19,14 +19,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *
  * @ORM\Entity
  * @ORM\Table(name="sekolah")
- * @ApiResource(normalizationContext={"groups"={"sekolah"}})
+ * @ApiResource(normalizationContext={"groups"={"get"}})
  * @ApiFilter(OrderFilter::class, properties={"nama", "nama_nomenklatur", "nss", "npsn", "bentuk_pendidikan_id", "alamat_jalan", "rt", "rw", "nama_dusun", "desa_kelurahan", "kode_wilayah", "kode_pos", "lintang", "bujur", "nomor_telepon", "nomor_fax", "email", "website", "kebutuhan_khusus_id", "status_sekolah", "sk_pendirian_sekolah", "status_kepemilikan_id", "yayasan_id", "sk_izin_operasional", "no_rekening", "nama_bank", "cabang_kcp_unit", "rekening_atas_nama", "mbs", "luas_tanah_milik", "luas_tanah_bukan_milik", "kode_registrasi", "npwp", "nm_wp", "flag", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"nama":"partial", "nama_nomenklatur":"partial", "nss":"partial", "npsn":"partial", "bentuk_pendidikan_id":"exact", "alamat_jalan":"partial", "rt":"exact", "rw":"exact", "nama_dusun":"partial", "desa_kelurahan":"partial", "kode_wilayah":"partial", "kode_pos":"partial", "lintang":"exact", "bujur":"exact", "nomor_telepon":"partial", "nomor_fax":"partial", "email":"partial", "website":"partial", "kebutuhan_khusus_id":"exact", "status_sekolah":"exact", "sk_pendirian_sekolah":"partial", "status_kepemilikan_id":"exact", "yayasan_id":"partial", "sk_izin_operasional":"partial", "no_rekening":"partial", "nama_bank":"partial", "cabang_kcp_unit":"partial", "rekening_atas_nama":"partial", "mbs":"exact", "luas_tanah_milik":"exact", "luas_tanah_bukan_milik":"exact", "kode_registrasi":"exact", "npwp":"partial", "nm_wp":"partial", "flag":"partial", "soft_delete":"exact", "updater_id":"partial"})
  */
 class Sekolah
 {
-
-
 
     /**
      * @var uuid
@@ -34,405 +32,345 @@ class Sekolah
      * @ORM\Id
      * @ORM\Column(name="sekolah_id", type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $id;
-
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama", type="string", length=100)
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nama;
-
+    public $nama;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama_nomenklatur", type="string", length=100,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nama_nomenklatur;
-
+    public $nama_nomenklatur;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nss", type="string", length=12,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nss;
-
+    public $nss;
 
     /**
      * @var string
      *
      * @ORM\Column(name="npsn", type="string", length=8,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $npsn;
-
+    public $npsn;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="bentuk_pendidikan_id", type="smallint")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @ORM\Column(name="bentuk_pendidikan_id", type="integer")
+     * @Groups({"get"})
      */
-    private $bentuk_pendidikan_id;
-
+    public $bentuk_pendidikan_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="alamat_jalan", type="string", length=80)
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $alamat_jalan;
-
+    public $alamat_jalan;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rt", type="string",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $rt;
-
+    public $rt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rw", type="string",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $rw;
-
+    public $rw;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama_dusun", type="string", length=60,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nama_dusun;
-
+    public $nama_dusun;
 
     /**
      * @var string
      *
      * @ORM\Column(name="desa_kelurahan", type="string", length=60)
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $desa_kelurahan;
-
+    public $desa_kelurahan;
 
     /**
      * @var string
      *
      * @ORM\Column(name="kode_wilayah", type="string", length=8)
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $kode_wilayah;
-
+    public $kode_wilayah;
 
     /**
      * @var string
      *
      * @ORM\Column(name="kode_pos", type="string", length=5,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $kode_pos;
-
+    public $kode_pos;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lintang", type="string",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $lintang;
-
+    public $lintang;
 
     /**
      * @var string
      *
      * @ORM\Column(name="bujur", type="string",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $bujur;
-
+    public $bujur;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomor_telepon", type="string", length=20,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nomor_telepon;
-
+    public $nomor_telepon;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomor_fax", type="string", length=20,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nomor_fax;
-
+    public $nomor_fax;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=60,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $email;
-
+    public $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=100,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $website;
-
+    public $website;
 
     /**
      * @var int
      *
      * @ORM\Column(name="kebutuhan_khusus_id", type="integer")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $kebutuhan_khusus_id;
-
+    public $kebutuhan_khusus_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status_sekolah", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $status_sekolah;
-
+    public $status_sekolah;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sk_pendirian_sekolah", type="string", length=80,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $sk_pendirian_sekolah;
-
+    public $sk_pendirian_sekolah;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tanggal_sk_pendirian", type="datetime",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $tanggal_sk_pendirian;
-
+    public $tanggal_sk_pendirian;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status_kepemilikan_id", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $status_kepemilikan_id;
-
+    public $status_kepemilikan_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="yayasan_id", type="string", length=36,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $yayasan_id;
-
+    public $yayasan_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sk_izin_operasional", type="string", length=80,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $sk_izin_operasional;
-
+    public $sk_izin_operasional;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tanggal_sk_izin_operasional", type="datetime",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $tanggal_sk_izin_operasional;
-
+    public $tanggal_sk_izin_operasional;
 
     /**
      * @var string
      *
      * @ORM\Column(name="no_rekening", type="string", length=20,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $no_rekening;
-
+    public $no_rekening;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama_bank", type="string", length=20,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nama_bank;
-
+    public $nama_bank;
 
     /**
      * @var string
      *
      * @ORM\Column(name="cabang_kcp_unit", type="string", length=60,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $cabang_kcp_unit;
-
+    public $cabang_kcp_unit;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rekening_atas_nama", type="string", length=50,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $rekening_atas_nama;
-
+    public $rekening_atas_nama;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mbs", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $mbs;
-
+    public $mbs;
 
     /**
      * @var string
      *
      * @ORM\Column(name="luas_tanah_milik", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $luas_tanah_milik;
-
+    public $luas_tanah_milik;
 
     /**
      * @var string
      *
      * @ORM\Column(name="luas_tanah_bukan_milik", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $luas_tanah_bukan_milik;
-
+    public $luas_tanah_bukan_milik;
 
     /**
      * @var string
      *
      * @ORM\Column(name="kode_registrasi", type="bigint",  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $kode_registrasi;
-
+    public $kode_registrasi;
 
     /**
      * @var string
      *
      * @ORM\Column(name="npwp", type="string", length=15,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $npwp;
-
+    public $npwp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nm_wp", type="string", length=100,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $nm_wp;
-
+    public $nm_wp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="flag", type="string", length=3,  nullable=true)
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $flag;
-
+    public $flag;
 
     /**
      * @var string
      *
      * @ORM\Column(name="create_date", type="datetime")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $create_date;
-
+    public $create_date;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_update", type="datetime")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $last_update;
-
+    public $last_update;
 
     /**
      * @var string
      *
      * @ORM\Column(name="soft_delete", type="string")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $soft_delete;
-
+    public $soft_delete;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_sync", type="datetime")
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $last_sync;
-
+    public $last_sync;
 
     /**
      * @var string
      *
      * @ORM\Column(name="updater_id", type="string", length=36)
-     * @Assert\NotNull
-     * @Groups({"sekolah", "foto", "geotag", "pengguna"})
+     * @Groups({"get"})
      */
-    private $updater_id;
-
+    public $updater_id;
 
     /**
      * @var Foto[] Available fotos for this sekolah.
@@ -440,7 +378,7 @@ class Sekolah
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="sekolah")
      * @Groups({"sekolah"})
      */
-    private $fotos;
+    public $fotos;
 
     /**
      * @var Geotag[] Available geotags for this sekolah.
@@ -448,7 +386,7 @@ class Sekolah
      * @ORM\OneToMany(targetEntity="Geotag", mappedBy="sekolah")
      * @Groups({"sekolah"})
      */
-    private $geotags;
+    public $geotags;
 
     /**
      * @var Pengguna[] Available penggunas for this sekolah.
@@ -456,26 +394,22 @@ class Sekolah
      * @ORM\OneToMany(targetEntity="Pengguna", mappedBy="sekolah")
      * @Groups({"sekolah"})
      */
-    private $penggunas;
+    public $penggunas;
 
     public function __construct() {
         $this->fotos = new ArrayCollection();
         $this->geotags = new ArrayCollection();
         $this->penggunas = new ArrayCollection();
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setNama($nama)
+    public function setId($id)
     {
-        $this->nama = $nama;
+        $this->id = $id;
     }
 
     public function getNama()
@@ -483,9 +417,9 @@ class Sekolah
         return $this->nama;
     }
 
-    public function setNamaNomenklatur($nama_nomenklatur)
+    public function setNama($nama)
     {
-        $this->nama_nomenklatur = $nama_nomenklatur;
+        $this->nama = $nama;
     }
 
     public function getNamaNomenklatur()
@@ -493,9 +427,9 @@ class Sekolah
         return $this->nama_nomenklatur;
     }
 
-    public function setNss($nss)
+    public function setNamaNomenklatur($nama_nomenklatur)
     {
-        $this->nss = $nss;
+        $this->nama_nomenklatur = $nama_nomenklatur;
     }
 
     public function getNss()
@@ -503,9 +437,9 @@ class Sekolah
         return $this->nss;
     }
 
-    public function setNpsn($npsn)
+    public function setNss($nss)
     {
-        $this->npsn = $npsn;
+        $this->nss = $nss;
     }
 
     public function getNpsn()
@@ -513,9 +447,9 @@ class Sekolah
         return $this->npsn;
     }
 
-    public function setBentukPendidikanId($bentuk_pendidikan_id)
+    public function setNpsn($npsn)
     {
-        $this->bentuk_pendidikan_id = $bentuk_pendidikan_id;
+        $this->npsn = $npsn;
     }
 
     public function getBentukPendidikanId()
@@ -523,9 +457,9 @@ class Sekolah
         return $this->bentuk_pendidikan_id;
     }
 
-    public function setAlamatJalan($alamat_jalan)
+    public function setBentukPendidikanId($bentuk_pendidikan_id)
     {
-        $this->alamat_jalan = $alamat_jalan;
+        $this->bentuk_pendidikan_id = $bentuk_pendidikan_id;
     }
 
     public function getAlamatJalan()
@@ -533,9 +467,9 @@ class Sekolah
         return $this->alamat_jalan;
     }
 
-    public function setRt($rt)
+    public function setAlamatJalan($alamat_jalan)
     {
-        $this->rt = $rt;
+        $this->alamat_jalan = $alamat_jalan;
     }
 
     public function getRt()
@@ -543,9 +477,9 @@ class Sekolah
         return $this->rt;
     }
 
-    public function setRw($rw)
+    public function setRt($rt)
     {
-        $this->rw = $rw;
+        $this->rt = $rt;
     }
 
     public function getRw()
@@ -553,9 +487,9 @@ class Sekolah
         return $this->rw;
     }
 
-    public function setNamaDusun($nama_dusun)
+    public function setRw($rw)
     {
-        $this->nama_dusun = $nama_dusun;
+        $this->rw = $rw;
     }
 
     public function getNamaDusun()
@@ -563,9 +497,9 @@ class Sekolah
         return $this->nama_dusun;
     }
 
-    public function setDesaKelurahan($desa_kelurahan)
+    public function setNamaDusun($nama_dusun)
     {
-        $this->desa_kelurahan = $desa_kelurahan;
+        $this->nama_dusun = $nama_dusun;
     }
 
     public function getDesaKelurahan()
@@ -573,9 +507,9 @@ class Sekolah
         return $this->desa_kelurahan;
     }
 
-    public function setKodeWilayah($kode_wilayah)
+    public function setDesaKelurahan($desa_kelurahan)
     {
-        $this->kode_wilayah = $kode_wilayah;
+        $this->desa_kelurahan = $desa_kelurahan;
     }
 
     public function getKodeWilayah()
@@ -583,9 +517,9 @@ class Sekolah
         return $this->kode_wilayah;
     }
 
-    public function setKodePos($kode_pos)
+    public function setKodeWilayah($kode_wilayah)
     {
-        $this->kode_pos = $kode_pos;
+        $this->kode_wilayah = $kode_wilayah;
     }
 
     public function getKodePos()
@@ -593,9 +527,9 @@ class Sekolah
         return $this->kode_pos;
     }
 
-    public function setLintang($lintang)
+    public function setKodePos($kode_pos)
     {
-        $this->lintang = $lintang;
+        $this->kode_pos = $kode_pos;
     }
 
     public function getLintang()
@@ -603,9 +537,9 @@ class Sekolah
         return $this->lintang;
     }
 
-    public function setBujur($bujur)
+    public function setLintang($lintang)
     {
-        $this->bujur = $bujur;
+        $this->lintang = $lintang;
     }
 
     public function getBujur()
@@ -613,9 +547,9 @@ class Sekolah
         return $this->bujur;
     }
 
-    public function setNomorTelepon($nomor_telepon)
+    public function setBujur($bujur)
     {
-        $this->nomor_telepon = $nomor_telepon;
+        $this->bujur = $bujur;
     }
 
     public function getNomorTelepon()
@@ -623,9 +557,9 @@ class Sekolah
         return $this->nomor_telepon;
     }
 
-    public function setNomorFax($nomor_fax)
+    public function setNomorTelepon($nomor_telepon)
     {
-        $this->nomor_fax = $nomor_fax;
+        $this->nomor_telepon = $nomor_telepon;
     }
 
     public function getNomorFax()
@@ -633,9 +567,9 @@ class Sekolah
         return $this->nomor_fax;
     }
 
-    public function setEmail($email)
+    public function setNomorFax($nomor_fax)
     {
-        $this->email = $email;
+        $this->nomor_fax = $nomor_fax;
     }
 
     public function getEmail()
@@ -643,9 +577,9 @@ class Sekolah
         return $this->email;
     }
 
-    public function setWebsite($website)
+    public function setEmail($email)
     {
-        $this->website = $website;
+        $this->email = $email;
     }
 
     public function getWebsite()
@@ -653,9 +587,9 @@ class Sekolah
         return $this->website;
     }
 
-    public function setKebutuhanKhususId($kebutuhan_khusus_id)
+    public function setWebsite($website)
     {
-        $this->kebutuhan_khusus_id = $kebutuhan_khusus_id;
+        $this->website = $website;
     }
 
     public function getKebutuhanKhususId()
@@ -663,9 +597,9 @@ class Sekolah
         return $this->kebutuhan_khusus_id;
     }
 
-    public function setStatusSekolah($status_sekolah)
+    public function setKebutuhanKhususId($kebutuhan_khusus_id)
     {
-        $this->status_sekolah = $status_sekolah;
+        $this->kebutuhan_khusus_id = $kebutuhan_khusus_id;
     }
 
     public function getStatusSekolah()
@@ -673,9 +607,9 @@ class Sekolah
         return $this->status_sekolah;
     }
 
-    public function setSkPendirianSekolah($sk_pendirian_sekolah)
+    public function setStatusSekolah($status_sekolah)
     {
-        $this->sk_pendirian_sekolah = $sk_pendirian_sekolah;
+        $this->status_sekolah = $status_sekolah;
     }
 
     public function getSkPendirianSekolah()
@@ -683,9 +617,9 @@ class Sekolah
         return $this->sk_pendirian_sekolah;
     }
 
-    public function setTanggalSkPendirian($tanggal_sk_pendirian)
+    public function setSkPendirianSekolah($sk_pendirian_sekolah)
     {
-        $this->tanggal_sk_pendirian = $tanggal_sk_pendirian;
+        $this->sk_pendirian_sekolah = $sk_pendirian_sekolah;
     }
 
     public function getTanggalSkPendirian()
@@ -693,9 +627,9 @@ class Sekolah
         return $this->tanggal_sk_pendirian;
     }
 
-    public function setStatusKepemilikanId($status_kepemilikan_id)
+    public function setTanggalSkPendirian($tanggal_sk_pendirian)
     {
-        $this->status_kepemilikan_id = $status_kepemilikan_id;
+        $this->tanggal_sk_pendirian = $tanggal_sk_pendirian;
     }
 
     public function getStatusKepemilikanId()
@@ -703,9 +637,9 @@ class Sekolah
         return $this->status_kepemilikan_id;
     }
 
-    public function setYayasanId($yayasan_id)
+    public function setStatusKepemilikanId($status_kepemilikan_id)
     {
-        $this->yayasan_id = $yayasan_id;
+        $this->status_kepemilikan_id = $status_kepemilikan_id;
     }
 
     public function getYayasanId()
@@ -713,9 +647,9 @@ class Sekolah
         return $this->yayasan_id;
     }
 
-    public function setSkIzinOperasional($sk_izin_operasional)
+    public function setYayasanId($yayasan_id)
     {
-        $this->sk_izin_operasional = $sk_izin_operasional;
+        $this->yayasan_id = $yayasan_id;
     }
 
     public function getSkIzinOperasional()
@@ -723,9 +657,9 @@ class Sekolah
         return $this->sk_izin_operasional;
     }
 
-    public function setTanggalSkIzinOperasional($tanggal_sk_izin_operasional)
+    public function setSkIzinOperasional($sk_izin_operasional)
     {
-        $this->tanggal_sk_izin_operasional = $tanggal_sk_izin_operasional;
+        $this->sk_izin_operasional = $sk_izin_operasional;
     }
 
     public function getTanggalSkIzinOperasional()
@@ -733,9 +667,9 @@ class Sekolah
         return $this->tanggal_sk_izin_operasional;
     }
 
-    public function setNoRekening($no_rekening)
+    public function setTanggalSkIzinOperasional($tanggal_sk_izin_operasional)
     {
-        $this->no_rekening = $no_rekening;
+        $this->tanggal_sk_izin_operasional = $tanggal_sk_izin_operasional;
     }
 
     public function getNoRekening()
@@ -743,9 +677,9 @@ class Sekolah
         return $this->no_rekening;
     }
 
-    public function setNamaBank($nama_bank)
+    public function setNoRekening($no_rekening)
     {
-        $this->nama_bank = $nama_bank;
+        $this->no_rekening = $no_rekening;
     }
 
     public function getNamaBank()
@@ -753,9 +687,9 @@ class Sekolah
         return $this->nama_bank;
     }
 
-    public function setCabangKcpUnit($cabang_kcp_unit)
+    public function setNamaBank($nama_bank)
     {
-        $this->cabang_kcp_unit = $cabang_kcp_unit;
+        $this->nama_bank = $nama_bank;
     }
 
     public function getCabangKcpUnit()
@@ -763,9 +697,9 @@ class Sekolah
         return $this->cabang_kcp_unit;
     }
 
-    public function setRekeningAtasNama($rekening_atas_nama)
+    public function setCabangKcpUnit($cabang_kcp_unit)
     {
-        $this->rekening_atas_nama = $rekening_atas_nama;
+        $this->cabang_kcp_unit = $cabang_kcp_unit;
     }
 
     public function getRekeningAtasNama()
@@ -773,9 +707,9 @@ class Sekolah
         return $this->rekening_atas_nama;
     }
 
-    public function setMbs($mbs)
+    public function setRekeningAtasNama($rekening_atas_nama)
     {
-        $this->mbs = $mbs;
+        $this->rekening_atas_nama = $rekening_atas_nama;
     }
 
     public function getMbs()
@@ -783,9 +717,9 @@ class Sekolah
         return $this->mbs;
     }
 
-    public function setLuasTanahMilik($luas_tanah_milik)
+    public function setMbs($mbs)
     {
-        $this->luas_tanah_milik = $luas_tanah_milik;
+        $this->mbs = $mbs;
     }
 
     public function getLuasTanahMilik()
@@ -793,9 +727,9 @@ class Sekolah
         return $this->luas_tanah_milik;
     }
 
-    public function setLuasTanahBukanMilik($luas_tanah_bukan_milik)
+    public function setLuasTanahMilik($luas_tanah_milik)
     {
-        $this->luas_tanah_bukan_milik = $luas_tanah_bukan_milik;
+        $this->luas_tanah_milik = $luas_tanah_milik;
     }
 
     public function getLuasTanahBukanMilik()
@@ -803,9 +737,9 @@ class Sekolah
         return $this->luas_tanah_bukan_milik;
     }
 
-    public function setKodeRegistrasi($kode_registrasi)
+    public function setLuasTanahBukanMilik($luas_tanah_bukan_milik)
     {
-        $this->kode_registrasi = $kode_registrasi;
+        $this->luas_tanah_bukan_milik = $luas_tanah_bukan_milik;
     }
 
     public function getKodeRegistrasi()
@@ -813,9 +747,9 @@ class Sekolah
         return $this->kode_registrasi;
     }
 
-    public function setNpwp($npwp)
+    public function setKodeRegistrasi($kode_registrasi)
     {
-        $this->npwp = $npwp;
+        $this->kode_registrasi = $kode_registrasi;
     }
 
     public function getNpwp()
@@ -823,9 +757,9 @@ class Sekolah
         return $this->npwp;
     }
 
-    public function setNmWp($nm_wp)
+    public function setNpwp($npwp)
     {
-        $this->nm_wp = $nm_wp;
+        $this->npwp = $npwp;
     }
 
     public function getNmWp()
@@ -833,9 +767,9 @@ class Sekolah
         return $this->nm_wp;
     }
 
-    public function setFlag($flag)
+    public function setNmWp($nm_wp)
     {
-        $this->flag = $flag;
+        $this->nm_wp = $nm_wp;
     }
 
     public function getFlag()
@@ -843,9 +777,9 @@ class Sekolah
         return $this->flag;
     }
 
-    public function setCreateDate($create_date)
+    public function setFlag($flag)
     {
-        $this->create_date = $create_date;
+        $this->flag = $flag;
     }
 
     public function getCreateDate()
@@ -853,9 +787,9 @@ class Sekolah
         return $this->create_date;
     }
 
-    public function setLastUpdate($last_update)
+    public function setCreateDate($create_date)
     {
-        $this->last_update = $last_update;
+        $this->create_date = $create_date;
     }
 
     public function getLastUpdate()
@@ -863,9 +797,9 @@ class Sekolah
         return $this->last_update;
     }
 
-    public function setSoftDelete($soft_delete)
+    public function setLastUpdate($last_update)
     {
-        $this->soft_delete = $soft_delete;
+        $this->last_update = $last_update;
     }
 
     public function getSoftDelete()
@@ -873,9 +807,9 @@ class Sekolah
         return $this->soft_delete;
     }
 
-    public function setLastSync($last_sync)
+    public function setSoftDelete($soft_delete)
     {
-        $this->last_sync = $last_sync;
+        $this->soft_delete = $soft_delete;
     }
 
     public function getLastSync()
@@ -883,9 +817,9 @@ class Sekolah
         return $this->last_sync;
     }
 
-    public function setUpdaterId($updater_id)
+    public function setLastSync($last_sync)
     {
-        $this->updater_id = $updater_id;
+        $this->last_sync = $last_sync;
     }
 
     public function getUpdaterId()
@@ -893,5 +827,8 @@ class Sekolah
         return $this->updater_id;
     }
 
-
+    public function setUpdaterId($updater_id)
+    {
+        $this->updater_id = $updater_id;
+    }
 }

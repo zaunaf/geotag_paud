@@ -26,8 +26,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 class JenisFoto
 {
 
-
-
     /**
      * @var int
      *
@@ -38,7 +36,6 @@ class JenisFoto
      */
     private $id;
 
-
     /**
      * @var string
      *
@@ -46,7 +43,6 @@ class JenisFoto
      * @Groups({"jenis_foto", "foto"})
      */
     private $nama_jenis_foto;
-
 
     /**
      * @var string
@@ -56,7 +52,6 @@ class JenisFoto
      */
     private $instruksi;
 
-
     /**
      * @var int
      *
@@ -64,7 +59,6 @@ class JenisFoto
      * @Groups({"jenis_foto", "foto"})
      */
     private $status_isian;
-
 
     /**
      * @var Foto[] Available fotos for this jenis_foto.
@@ -77,19 +71,15 @@ class JenisFoto
     public function __construct() {
         $this->fotos = new ArrayCollection();
 }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function setNamaJenisFoto($nama_jenis_foto)
+    public function setId($id)
     {
-        $this->nama_jenis_foto = $nama_jenis_foto;
+        $this->id = $id;
     }
 
     public function getNamaJenisFoto()
@@ -97,9 +87,9 @@ class JenisFoto
         return $this->nama_jenis_foto;
     }
 
-    public function setInstruksi($instruksi)
+    public function setNamaJenisFoto($nama_jenis_foto)
     {
-        $this->instruksi = $instruksi;
+        $this->nama_jenis_foto = $nama_jenis_foto;
     }
 
     public function getInstruksi()
@@ -107,9 +97,9 @@ class JenisFoto
         return $this->instruksi;
     }
 
-    public function setStatusIsian($status_isian)
+    public function setInstruksi($instruksi)
     {
-        $this->status_isian = $status_isian;
+        $this->instruksi = $instruksi;
     }
 
     public function getStatusIsian()
@@ -117,5 +107,8 @@ class JenisFoto
         return $this->status_isian;
     }
 
-
+    public function setStatusIsian($status_isian)
+    {
+        $this->status_isian = $status_isian;
+    }
 }
