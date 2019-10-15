@@ -151,6 +151,13 @@ abstract class Foto implements ActiveRecordInterface
     protected $tgl_pengiriman;
 
     /**
+     * The value for the status_data field.
+     *
+     * @var        int
+     */
+    protected $status_data;
+
+    /**
      * @var        ChildJenisFoto
      */
     protected $aJenisFoto;
@@ -539,6 +546,16 @@ abstract class Foto implements ActiveRecordInterface
     }
 
     /**
+     * Get the [status_data] column value.
+     *
+     * @return int
+     */
+    public function getStatusData()
+    {
+        return $this->status_data;
+    }
+
+    /**
      * Set the value of [foto_id] column.
      *
      * @param string $v new value
@@ -791,6 +808,26 @@ abstract class Foto implements ActiveRecordInterface
     } // setTglPengiriman()
 
     /**
+     * Set the value of [status_data] column.
+     *
+     * @param int $v new value
+     * @return $this|\Appdb\Foto The current object (for fluent API support)
+     */
+    public function setStatusData($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->status_data !== $v) {
+            $this->status_data = $v;
+            $this->modifiedColumns[FotoTableMap::COL_STATUS_DATA] = true;
+        }
+
+        return $this;
+    } // setStatusData()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -861,6 +898,9 @@ abstract class Foto implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : FotoTableMap::translateFieldName('TglPengiriman', TableMap::TYPE_PHPNAME, $indexType)];
             $this->tgl_pengiriman = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 12 + $startcol : FotoTableMap::translateFieldName('StatusData', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->status_data = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -869,7 +909,7 @@ abstract class Foto implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 12; // 12 = FotoTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 13; // 13 = FotoTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\Appdb\\Foto'), 0, $e);
@@ -1184,6 +1224,9 @@ abstract class Foto implements ActiveRecordInterface
             case 11:
                 return $this->getTglPengiriman();
                 break;
+            case 12:
+                return $this->getStatusData();
+                break;
             default:
                 return null;
                 break;
@@ -1226,6 +1269,7 @@ abstract class Foto implements ActiveRecordInterface
             $keys[9] => $this->getLintang(),
             $keys[10] => $this->getBujur(),
             $keys[11] => $this->getTglPengiriman(),
+            $keys[12] => $this->getStatusData(),
         );
         if ($result[$keys[5]] instanceof \DateTimeInterface) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
@@ -1356,6 +1400,9 @@ abstract class Foto implements ActiveRecordInterface
             case 11:
                 $this->setTglPengiriman($value);
                 break;
+            case 12:
+                $this->setStatusData($value);
+                break;
         } // switch()
 
         return $this;
@@ -1417,6 +1464,9 @@ abstract class Foto implements ActiveRecordInterface
         }
         if (array_key_exists($keys[11], $arr)) {
             $this->setTglPengiriman($arr[$keys[11]]);
+        }
+        if (array_key_exists($keys[12], $arr)) {
+            $this->setStatusData($arr[$keys[12]]);
         }
     }
 
@@ -1494,6 +1544,9 @@ abstract class Foto implements ActiveRecordInterface
         }
         if ($this->isColumnModified(FotoTableMap::COL_TGL_PENGIRIMAN)) {
             $criteria->add(FotoTableMap::COL_TGL_PENGIRIMAN, $this->tgl_pengiriman);
+        }
+        if ($this->isColumnModified(FotoTableMap::COL_STATUS_DATA)) {
+            $criteria->add(FotoTableMap::COL_STATUS_DATA, $this->status_data);
         }
 
         return $criteria;
@@ -1593,6 +1646,7 @@ abstract class Foto implements ActiveRecordInterface
         $copyObj->setLintang($this->getLintang());
         $copyObj->setBujur($this->getBujur());
         $copyObj->setTglPengiriman($this->getTglPengiriman());
+        $copyObj->setStatusData($this->getStatusData());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -1801,6 +1855,7 @@ abstract class Foto implements ActiveRecordInterface
         $this->lintang = null;
         $this->bujur = null;
         $this->tgl_pengiriman = null;
+        $this->status_data = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

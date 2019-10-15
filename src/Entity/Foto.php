@@ -13,15 +13,19 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * Foto.
  *
  * @ORM\Entity
  * @ORM\Table(name="foto")
- * @ApiResource(normalizationContext={"groups"={"foto"}})
- * @ApiFilter(OrderFilter::class, properties={"jenis_foto_id", "judul", "tinggi_pixel", "lebar_pixel", "ukuran", "lintang", "bujur", }, arguments={"orderParameterName"="order"})
- * @ApiFilter(SearchFilter::class, properties={"jenis_foto_id":"exact", "judul":"partial", "tinggi_pixel":"exact", "lebar_pixel":"exact", "ukuran":"exact", "lintang":"exact", "bujur":"exact", })
+ * @ApiResource(
+ *     normalizationContext={"groups"={"get", "foto"}},
+ *     denormalizationContext={"groups"={"post"}}
+ * )
+ * @ApiFilter(OrderFilter::class, properties={"jenis_foto_id", "judul", "tinggi_pixel", "lebar_pixel", "ukuran", "lintang", "bujur", "status_data"}, arguments={"orderParameterName"="order"})
+ * @ApiFilter(SearchFilter::class, properties={"jenis_foto_id":"exact", "judul":"partial", "tinggi_pixel":"exact", "lebar_pixel":"exact", "ukuran":"exact", "lintang":"exact", "bujur":"exact", "status_data":"exact"})
  */
 class Foto
 {
@@ -29,143 +33,126 @@ class Foto
     /**
      * @var uuid
      *
+     * @ApiProperty(identifier=true)
      * @ORM\Id
      * @ORM\Column(name="foto_id", type="guid")
-     * @ORM\GeneratedValue(strategy="UUID")
      * @Assert\NotNull
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $id;
+    public $foto_id;
 
     /**
      * @var JenisFoto
      *
      * @ORM\ManyToOne(targetEntity="JenisFoto", inversedBy="fotos")
      * @ORM\JoinColumn(name="jenis_foto_id", referencedColumnName="jenis_foto_id")
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $jenis_foto;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="jenis_foto_id", type="smallint")
-     * @Assert\NotNull
-     * @Groups({"foto"})
-     */
-    private $jenis_foto_id;
+    public $jenis_foto;
 
     /**
      * @var Sekolah
      *
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="fotos")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id")
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $sekolah;
-
-    /**
-     * @var uuid
-     *
-     * @ORM\Column(name="sekolah_id", type="guid")
-     * @Assert\NotNull
-     * @Groups({"foto"})
-     */
-    private $sekolah_id;
+    public $sekolah;
 
     /**
      * @var Pengguna
      *
      * @ORM\ManyToOne(targetEntity="Pengguna", inversedBy="fotos")
      * @ORM\JoinColumn(name="pengguna_id", referencedColumnName="pengguna_id")
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $pengguna;
-
-    /**
-     * @var uuid
-     *
-     * @ORM\Column(name="pengguna_id", type="guid")
-     * @Assert\NotNull
-     * @Groups({"foto"})
-     */
-    private $pengguna_id;
+    public $pengguna;
 
     /**
      * @var string
      *
      * @ORM\Column(name="judul", type="string", length=250,  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $judul;
+    public $judul;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tgl_pengambilan", type="datetime",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $tgl_pengambilan;
+    public $tgl_pengambilan;
 
     /**
      * @var int
      *
      * @ORM\Column(name="tinggi_pixel", type="integer",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $tinggi_pixel;
+    public $tinggi_pixel;
 
     /**
      * @var int
      *
      * @ORM\Column(name="lebar_pixel", type="integer",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $lebar_pixel;
+    public $lebar_pixel;
 
     /**
      * @var int
      *
      * @ORM\Column(name="ukuran", type="integer",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $ukuran;
+    public $ukuran;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lintang", type="string",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $lintang;
+    public $lintang;
 
     /**
      * @var string
      *
      * @ORM\Column(name="bujur", type="string",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $bujur;
+    public $bujur;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tgl_pengiriman", type="datetime",  nullable=true)
-     * @Groups({"foto"})
+     * @Groups({"get", "post", "foto"})
      */
-    private $tgl_pengiriman;
+    public $tgl_pengiriman;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status_data", type="smallint",  nullable=true)
+     * @Groups({"get", "post", "foto"})
+     */
+    public $status_data;
 
     public function __construct() {
-}
-
-    public function getId()
-    {
-        return $this->id;
     }
 
-    public function setId($id)
+
+
+    public function getFotoId()
     {
-        $this->id = $id;
+        return $this->foto_id;
+    }
+
+    public function setFotoId($foto_id)
+    {
+        $this->foto_id = $foto_id;
     }
 
     public function getJenisFoto(): JenisFoto
@@ -179,16 +166,6 @@ class Foto
         return $this;
     }
 
-    public function getJenisFotoId()
-    {
-        return $this->jenis_foto_id;
-    }
-
-    public function setJenisFotoId($jenis_foto_id)
-    {
-        $this->jenis_foto_id = $jenis_foto_id;
-    }
-
     public function getSekolah(): Sekolah
     {
         return $this->sekolah;
@@ -200,16 +177,6 @@ class Foto
         return $this;
     }
 
-    public function getSekolahId()
-    {
-        return $this->sekolah_id;
-    }
-
-    public function setSekolahId($sekolah_id)
-    {
-        $this->sekolah_id = $sekolah_id;
-    }
-
     public function getPengguna(): Pengguna
     {
         return $this->pengguna;
@@ -219,16 +186,6 @@ class Foto
     {
         $this->pengguna = $pengguna;
         return $this;
-    }
-
-    public function getPenggunaId()
-    {
-        return $this->pengguna_id;
-    }
-
-    public function setPenggunaId($pengguna_id)
-    {
-        $this->pengguna_id = $pengguna_id;
     }
 
     public function getJudul()
@@ -309,5 +266,15 @@ class Foto
     public function setTglPengiriman($tgl_pengiriman)
     {
         $this->tgl_pengiriman = $tgl_pengiriman;
+    }
+
+    public function getStatusData()
+    {
+        return $this->status_data;
+    }
+
+    public function setStatusData($status_data)
+    {
+        $this->status_data = $status_data;
     }
 }

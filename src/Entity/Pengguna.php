@@ -14,13 +14,17 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * Pengguna.
  *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="pengguna")
- * @ApiResource(normalizationContext={"groups"={"get"}})
+ * @ApiResource(
+ *     normalizationContext={"groups"={"get", "pengguna"}},
+ *     denormalizationContext={"groups"={"post"}}
+ * )
  * @ApiFilter(OrderFilter::class, properties={"username", "password", "nama", "nip_nim", "jabatan_lembaga", "ym", "skype", "alamat", "kode_wilayah", "no_telepon", "no_hp", "aktif", "ptk_id", "peran_id", "lembaga_id", "yayasan_id", "la_id", "dudi_id", "roles", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"username":"partial", "password":"partial", "nama":"partial", "nip_nim":"partial", "jabatan_lembaga":"partial", "ym":"partial", "skype":"partial", "alamat":"partial", "kode_wilayah":"partial", "no_telepon":"partial", "no_hp":"partial", "aktif":"exact", "ptk_id":"partial", "peran_id":"exact", "lembaga_id":"partial", "yayasan_id":"partial", "la_id":"partial", "dudi_id":"partial", "roles":"partial", "soft_delete":"exact", "updater_id":"partial"})
  */
@@ -34,37 +38,29 @@ class Pengguna implements UserInterface, \Serializable
     /**
      * @var uuid
      *
+     * @ApiProperty(identifier=true)
      * @ORM\Id
      * @ORM\Column(name="pengguna_id", type="guid")
-     * @ORM\GeneratedValue(strategy="UUID")
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
-    public $id;
+    public $pengguna_id;
 
     /**
      * @var Sekolah
      *
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="penggunas")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna"})
      */
     public $sekolah;
-
-    /**
-     * @var uuid
-     *
-     * @ORM\Column(name="sekolah_id", type="guid",  nullable=true)
-     * @Groups({"get"})
-     */
-    public $sekolah_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=60)
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $username;
 
@@ -73,7 +69,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="password", type="string", length=50)
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $password;
 
@@ -82,7 +78,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="nama", type="string", length=100)
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $nama;
 
@@ -90,7 +86,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="nip_nim", type="string", length=18,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $nip_nim;
 
@@ -98,7 +94,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="jabatan_lembaga", type="string", length=25,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $jabatan_lembaga;
 
@@ -106,7 +102,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="ym", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $ym;
 
@@ -114,7 +110,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="skype", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $skype;
 
@@ -122,7 +118,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="alamat", type="string", length=80,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $alamat;
 
@@ -131,7 +127,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="kode_wilayah", type="string", length=8)
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $kode_wilayah;
 
@@ -139,7 +135,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="no_telepon", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $no_telepon;
 
@@ -147,7 +143,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="no_hp", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $no_hp;
 
@@ -156,7 +152,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="aktif", type="string")
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $aktif;
 
@@ -164,7 +160,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="ptk_id", type="string", length=36,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $ptk_id;
 
@@ -173,7 +169,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="peran_id", type="integer")
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $peran_id;
 
@@ -181,7 +177,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="lembaga_id", type="string", length=36,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $lembaga_id;
 
@@ -189,7 +185,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="yayasan_id", type="string", length=36,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $yayasan_id;
 
@@ -197,7 +193,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="la_id", type="string", length=5,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $la_id;
 
@@ -205,7 +201,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="dudi_id", type="string", length=36,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $dudi_id;
 
@@ -214,7 +210,7 @@ class Pengguna implements UserInterface, \Serializable
      *
      * @ORM\Column(name="create_date", type="datetime")
      * @Assert\NotNull
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $create_date;
 
@@ -222,43 +218,39 @@ class Pengguna implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="simple_array", length=200)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $roles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_update", type="datetime")
-     * @Assert\NotNull
-     * @Groups({"get"})
+     * @ORM\Column(name="last_update", type="datetime",  nullable=true)
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $last_update;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="soft_delete", type="string")
-     * @Assert\NotNull
-     * @Groups({"get"})
+     * @ORM\Column(name="soft_delete", type="string",  nullable=true)
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $soft_delete;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_sync", type="datetime")
-     * @Assert\NotNull
-     * @Groups({"get"})
+     * @ORM\Column(name="last_sync", type="datetime",  nullable=true)
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $last_sync;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="updater_id", type="string", length=36)
-     * @Assert\NotNull
-     * @Groups({"get"})
+     * @ORM\Column(name="updater_id", type="string", length=36,  nullable=true)
+     * @Groups({"get", "post", "pengguna", "foto", "geotag"})
      */
     public $updater_id;
 
@@ -266,7 +258,7 @@ class Pengguna implements UserInterface, \Serializable
      * @var Foto[] Available fotos for this pengguna.
      *
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="pengguna")
-     * @Groups({"get"})
+     * @Groups({"pengguna"})
      */
     public $fotos;
 
@@ -274,23 +266,25 @@ class Pengguna implements UserInterface, \Serializable
      * @var Geotag[] Available geotags for this pengguna.
      *
      * @ORM\OneToMany(targetEntity="Geotag", mappedBy="pengguna")
-     * @Groups({"get"})
+     * @Groups({"pengguna"})
      */
     public $geotags;
 
     public function __construct() {
         $this->fotos = new ArrayCollection();
         $this->geotags = new ArrayCollection();
-}
-
-    public function getId()
-    {
-        return $this->id;
     }
 
-    public function setId($id)
+
+
+    public function getPenggunaId()
     {
-        $this->id = $id;
+        return $this->pengguna_id;
+    }
+
+    public function setPenggunaId($pengguna_id)
+    {
+        $this->pengguna_id = $pengguna_id;
     }
 
     public function getSekolah(): Sekolah
@@ -302,16 +296,6 @@ class Pengguna implements UserInterface, \Serializable
     {
         $this->sekolah = $sekolah;
         return $this;
-    }
-
-    public function getSekolahId()
-    {
-        return $this->sekolah_id;
-    }
-
-    public function setSekolahId($sekolah_id)
-    {
-        $this->sekolah_id = $sekolah_id;
     }
 
     public function getUsername()

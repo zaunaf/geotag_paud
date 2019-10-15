@@ -137,11 +137,11 @@ abstract class Geotag implements ActiveRecordInterface
     protected $tgl_pengiriman;
 
     /**
-     * The value for the status_tag field.
+     * The value for the status_data field.
      *
      * @var        int
      */
-    protected $status_tag;
+    protected $status_data;
 
     /**
      * @var        ChildPengguna
@@ -512,13 +512,13 @@ abstract class Geotag implements ActiveRecordInterface
     }
 
     /**
-     * Get the [status_tag] column value.
+     * Get the [status_data] column value.
      *
      * @return int
      */
-    public function getStatusTag()
+    public function getStatusData()
     {
-        return $this->status_tag;
+        return $this->status_data;
     }
 
     /**
@@ -734,24 +734,24 @@ abstract class Geotag implements ActiveRecordInterface
     } // setTglPengiriman()
 
     /**
-     * Set the value of [status_tag] column.
+     * Set the value of [status_data] column.
      *
      * @param int $v new value
      * @return $this|\Appdb\Geotag The current object (for fluent API support)
      */
-    public function setStatusTag($v)
+    public function setStatusData($v)
     {
         if ($v !== null) {
             $v = (int) $v;
         }
 
-        if ($this->status_tag !== $v) {
-            $this->status_tag = $v;
-            $this->modifiedColumns[GeotagTableMap::COL_STATUS_TAG] = true;
+        if ($this->status_data !== $v) {
+            $this->status_data = $v;
+            $this->modifiedColumns[GeotagTableMap::COL_STATUS_DATA] = true;
         }
 
         return $this;
-    } // setStatusTag()
+    } // setStatusData()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -819,8 +819,8 @@ abstract class Geotag implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : GeotagTableMap::translateFieldName('TglPengiriman', TableMap::TYPE_PHPNAME, $indexType)];
             $this->tgl_pengiriman = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : GeotagTableMap::translateFieldName('StatusTag', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->status_tag = (null !== $col) ? (int) $col : null;
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : GeotagTableMap::translateFieldName('StatusData', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->status_data = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -1139,7 +1139,7 @@ abstract class Geotag implements ActiveRecordInterface
                 return $this->getTglPengiriman();
                 break;
             case 10:
-                return $this->getStatusTag();
+                return $this->getStatusData();
                 break;
             default:
                 return null;
@@ -1181,7 +1181,7 @@ abstract class Geotag implements ActiveRecordInterface
             $keys[7] => $this->getPetugasLink(),
             $keys[8] => $this->getSekolahLink(),
             $keys[9] => $this->getTglPengiriman(),
-            $keys[10] => $this->getStatusTag(),
+            $keys[10] => $this->getStatusData(),
         );
         if ($result[$keys[4]] instanceof \DateTimeInterface) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
@@ -1307,7 +1307,7 @@ abstract class Geotag implements ActiveRecordInterface
                 $this->setTglPengiriman($value);
                 break;
             case 10:
-                $this->setStatusTag($value);
+                $this->setStatusData($value);
                 break;
         } // switch()
 
@@ -1366,7 +1366,7 @@ abstract class Geotag implements ActiveRecordInterface
             $this->setTglPengiriman($arr[$keys[9]]);
         }
         if (array_key_exists($keys[10], $arr)) {
-            $this->setStatusTag($arr[$keys[10]]);
+            $this->setStatusData($arr[$keys[10]]);
         }
     }
 
@@ -1439,8 +1439,8 @@ abstract class Geotag implements ActiveRecordInterface
         if ($this->isColumnModified(GeotagTableMap::COL_TGL_PENGIRIMAN)) {
             $criteria->add(GeotagTableMap::COL_TGL_PENGIRIMAN, $this->tgl_pengiriman);
         }
-        if ($this->isColumnModified(GeotagTableMap::COL_STATUS_TAG)) {
-            $criteria->add(GeotagTableMap::COL_STATUS_TAG, $this->status_tag);
+        if ($this->isColumnModified(GeotagTableMap::COL_STATUS_DATA)) {
+            $criteria->add(GeotagTableMap::COL_STATUS_DATA, $this->status_data);
         }
 
         return $criteria;
@@ -1538,7 +1538,7 @@ abstract class Geotag implements ActiveRecordInterface
         $copyObj->setPetugasLink($this->getPetugasLink());
         $copyObj->setSekolahLink($this->getSekolahLink());
         $copyObj->setTglPengiriman($this->getTglPengiriman());
-        $copyObj->setStatusTag($this->getStatusTag());
+        $copyObj->setStatusData($this->getStatusData());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -1745,7 +1745,7 @@ abstract class Geotag implements ActiveRecordInterface
         $this->petugas_link = null;
         $this->sekolah_link = null;
         $this->tgl_pengiriman = null;
-        $this->status_tag = null;
+        $this->status_data = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

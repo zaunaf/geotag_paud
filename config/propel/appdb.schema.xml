@@ -13,6 +13,7 @@
     <column name="lintang" phpName="Lintang" type="NUMERIC" size="13" scale="7"/>
     <column name="bujur" phpName="Bujur" type="NUMERIC" size="13" scale="7"/>
     <column name="tgl_pengiriman" phpName="TglPengiriman" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="status_data" phpName="StatusData" type="SMALLINT" size="2" scale="0"/>
     <foreign-key foreignTable="jenis_foto" foreignSchema="ref" name="FK_FOTO_FOTO_JENI_JENIS_FO">
       <reference local="jenis_foto_id" foreign="jenis_foto_id"/>
     </foreign-key>
@@ -40,7 +41,7 @@
     <column name="petugas_link" phpName="PetugasLink" type="CHAR" size="16"/>
     <column name="sekolah_link" phpName="SekolahLink" type="CHAR" size="16"/>
     <column name="tgl_pengiriman" phpName="TglPengiriman" type="TIMESTAMP" size="16" scale="3"/>
-    <column name="status_tag" phpName="StatusTag" type="SMALLINT" size="2" scale="0"/>
+    <column name="status_data" phpName="StatusData" type="SMALLINT" size="2" scale="0"/>
     <foreign-key foreignTable="pengguna" name="FK_GEOTAG_PETUGAS_G_PENGGUNA">
       <reference local="pengguna_id" foreign="pengguna_id"/>
     </foreign-key>
@@ -86,10 +87,10 @@
     <column name="dudi_id" phpName="DudiId" type="VARCHAR" size="36"/>
     <column name="create_date" phpName="CreateDate" type="TIMESTAMP" size="16" scale="3" required="true"/>
     <column name="roles" phpName="Roles" type="LONGVARCHAR" size="2147483647"/>
-    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3" required="true"/>
-    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0" required="true"/>
-    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3" required="true"/>
-    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36" required="true"/>
+    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0"/>
+    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36"/>
     <foreign-key foreignTable="sekolah" name="FK_PENGGUNA_USER_SEKO_SEKOLAH">
       <reference local="sekolah_id" foreign="sekolah_id"/>
     </foreign-key>
@@ -136,14 +137,14 @@
     <column name="npwp" phpName="Npwp" type="CHAR" size="15"/>
     <column name="nm_wp" phpName="NmWp" type="VARCHAR" size="100"/>
     <column name="flag" phpName="Flag" type="CHAR" size="3"/>
-    <column name="create_date" phpName="CreateDate" type="TIMESTAMP" size="16" scale="3" required="true"/>
-    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3" required="true"/>
-    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0" required="true"/>
-    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3" required="true"/>
-    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36" required="true"/>
+    <column name="create_date" phpName="CreateDate" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="last_update" phpName="LastUpdate" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="soft_delete" phpName="SoftDelete" type="NUMERIC" size="3" scale="0"/>
+    <column name="last_sync" phpName="LastSync" type="TIMESTAMP" size="16" scale="3"/>
+    <column name="updater_id" phpName="UpdaterId" type="VARCHAR" size="36"/>
   </table>
   <table name="status_geotag" schema="ref" idMethod="native" phpName="StatusGeotag" namespace="\Appdb">
     <column name="status_geotag_id" phpName="StatusGeotagId" type="SMALLINT" size="2" scale="0" primaryKey="true" required="true"/>
-    <column name="nama_status_geotag" phpName="NamaStatusGeotag" type="VARCHAR" size="20"/>
+    <column name="nama_status_geotag" phpName="NamaStatusGeotag" type="VARCHAR" size="80"/>
   </table>
 </database>

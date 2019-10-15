@@ -32,6 +32,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFotoQuery orderByLintang($order = Criteria::ASC) Order by the lintang column
  * @method     ChildFotoQuery orderByBujur($order = Criteria::ASC) Order by the bujur column
  * @method     ChildFotoQuery orderByTglPengiriman($order = Criteria::ASC) Order by the tgl_pengiriman column
+ * @method     ChildFotoQuery orderByStatusData($order = Criteria::ASC) Order by the status_data column
  *
  * @method     ChildFotoQuery groupByFotoId() Group by the foto_id column
  * @method     ChildFotoQuery groupByJenisFotoId() Group by the jenis_foto_id column
@@ -45,6 +46,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFotoQuery groupByLintang() Group by the lintang column
  * @method     ChildFotoQuery groupByBujur() Group by the bujur column
  * @method     ChildFotoQuery groupByTglPengiriman() Group by the tgl_pengiriman column
+ * @method     ChildFotoQuery groupByStatusData() Group by the status_data column
  *
  * @method     ChildFotoQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildFotoQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -100,7 +102,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFoto findOneByUkuran(int $ukuran) Return the first ChildFoto filtered by the ukuran column
  * @method     ChildFoto findOneByLintang(string $lintang) Return the first ChildFoto filtered by the lintang column
  * @method     ChildFoto findOneByBujur(string $bujur) Return the first ChildFoto filtered by the bujur column
- * @method     ChildFoto findOneByTglPengiriman(string $tgl_pengiriman) Return the first ChildFoto filtered by the tgl_pengiriman column *
+ * @method     ChildFoto findOneByTglPengiriman(string $tgl_pengiriman) Return the first ChildFoto filtered by the tgl_pengiriman column
+ * @method     ChildFoto findOneByStatusData(int $status_data) Return the first ChildFoto filtered by the status_data column *
 
  * @method     ChildFoto requirePk($key, ConnectionInterface $con = null) Return the ChildFoto by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFoto requireOne(ConnectionInterface $con = null) Return the first ChildFoto matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -117,6 +120,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFoto requireOneByLintang(string $lintang) Return the first ChildFoto filtered by the lintang column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFoto requireOneByBujur(string $bujur) Return the first ChildFoto filtered by the bujur column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFoto requireOneByTglPengiriman(string $tgl_pengiriman) Return the first ChildFoto filtered by the tgl_pengiriman column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildFoto requireOneByStatusData(int $status_data) Return the first ChildFoto filtered by the status_data column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildFoto[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildFoto objects based on current ModelCriteria
  * @method     ChildFoto[]|ObjectCollection findByFotoId(string $foto_id) Return ChildFoto objects filtered by the foto_id column
@@ -131,6 +135,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFoto[]|ObjectCollection findByLintang(string $lintang) Return ChildFoto objects filtered by the lintang column
  * @method     ChildFoto[]|ObjectCollection findByBujur(string $bujur) Return ChildFoto objects filtered by the bujur column
  * @method     ChildFoto[]|ObjectCollection findByTglPengiriman(string $tgl_pengiriman) Return ChildFoto objects filtered by the tgl_pengiriman column
+ * @method     ChildFoto[]|ObjectCollection findByStatusData(int $status_data) Return ChildFoto objects filtered by the status_data column
  * @method     ChildFoto[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -229,7 +234,7 @@ abstract class FotoQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT foto_id, jenis_foto_id, sekolah_id, pengguna_id, judul, tgl_pengambilan, tinggi_pixel, lebar_pixel, ukuran, lintang, bujur, tgl_pengiriman FROM foto WHERE foto_id = :p0';
+        $sql = 'SELECT foto_id, jenis_foto_id, sekolah_id, pengguna_id, judul, tgl_pengambilan, tinggi_pixel, lebar_pixel, ukuran, lintang, bujur, tgl_pengiriman, status_data FROM foto WHERE foto_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_STR);
@@ -751,6 +756,47 @@ abstract class FotoQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(FotoTableMap::COL_TGL_PENGIRIMAN, $tglPengiriman, $comparison);
+    }
+
+    /**
+     * Filter the query on the status_data column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByStatusData(1234); // WHERE status_data = 1234
+     * $query->filterByStatusData(array(12, 34)); // WHERE status_data IN (12, 34)
+     * $query->filterByStatusData(array('min' => 12)); // WHERE status_data > 12
+     * </code>
+     *
+     * @param     mixed $statusData The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildFotoQuery The current query, for fluid interface
+     */
+    public function filterByStatusData($statusData = null, $comparison = null)
+    {
+        if (is_array($statusData)) {
+            $useMinMax = false;
+            if (isset($statusData['min'])) {
+                $this->addUsingAlias(FotoTableMap::COL_STATUS_DATA, $statusData['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($statusData['max'])) {
+                $this->addUsingAlias(FotoTableMap::COL_STATUS_DATA, $statusData['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(FotoTableMap::COL_STATUS_DATA, $statusData, $comparison);
     }
 
     /**

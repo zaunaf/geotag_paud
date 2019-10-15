@@ -273,10 +273,10 @@ class PenggunaTableMap extends TableMap
         $this->addColumn('dudi_id', 'DudiId', 'VARCHAR', false, 36, null);
         $this->addColumn('create_date', 'CreateDate', 'TIMESTAMP', true, 16, null);
         $this->addColumn('roles', 'Roles', 'LONGVARCHAR', false, 2147483647, null);
-        $this->addColumn('last_update', 'LastUpdate', 'TIMESTAMP', true, 16, null);
-        $this->addColumn('soft_delete', 'SoftDelete', 'NUMERIC', true, 3, null);
-        $this->addColumn('last_sync', 'LastSync', 'TIMESTAMP', true, 16, null);
-        $this->addColumn('updater_id', 'UpdaterId', 'VARCHAR', true, 36, null);
+        $this->addColumn('last_update', 'LastUpdate', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('soft_delete', 'SoftDelete', 'NUMERIC', false, 3, null);
+        $this->addColumn('last_sync', 'LastSync', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('updater_id', 'UpdaterId', 'VARCHAR', false, 36, null);
     } // initialize()
 
     /**

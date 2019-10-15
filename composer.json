@@ -18,16 +18,17 @@
         "vich/uploader-bundle": "^1.10"
     },
     "require-dev": {
+        "api-platform/schema-generator": "^2.1",
+        "derasy/derasy-bundle": "*@dev",
         "doctrine/doctrine-fixtures-bundle": "^3.2",
         "fzaninotto/faker": "^1.8",
+        "propel/propel": "dev-master",
+        "propel/propel-bundle": "4.0.x-dev",
+        "symfony/dotenv": "*",
         "symfony/maker-bundle": "^1.13",
         "symfony/process": "4.3.*",
         "symfony/var-dumper": "4.3.*",
-        "symfony/dotenv": "*",
-        "symfony/web-server-bundle": "*",
-        "propel/propel": "dev-master",
-        "propel/propel-bundle": "4.0.x-dev",
-        "derasy/derasy-bundle": "*@dev"
+        "symfony/web-server-bundle": "*"
     },
     "config": {
         "preferred-install": {

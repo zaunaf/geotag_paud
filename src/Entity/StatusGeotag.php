@@ -13,13 +13,17 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * StatusGeotag.
  *
  * @ORM\Entity
  * @ORM\Table(name="ref.status_geotag")
- * @ApiResource(normalizationContext={"groups"={"status_geotag"}})
+ * @ApiResource(
+ *     normalizationContext={"groups"={"get", "status_geotag"}},
+ *     denormalizationContext={"groups"={"post"}}
+ * )
  * @ApiFilter(OrderFilter::class, properties={"status_geotag_id", "nama_status_geotag"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"status_geotag_id":"exact", "nama_status_geotag":"partial"})
  */
@@ -29,20 +33,21 @@ class StatusGeotag
     /**
      * @var int
      *
+     * @ApiProperty(identifier=true)
      * @ORM\Id
      * @ORM\Column(name="status_geotag_id", type="smallint")
      * @Assert\NotNull
-     * @Groups({"status_geotag", "geotag"})
+     * @Groups({"get", "post", "status_geotag", "geotag"})
      */
-    private $id;
+    public $status_geotag_id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nama_status_geotag", type="string", length=20,  nullable=true)
-     * @Groups({"status_geotag", "geotag"})
+     * @ORM\Column(name="nama_status_geotag", type="string", length=80,  nullable=true)
+     * @Groups({"get", "post", "status_geotag", "geotag"})
      */
-    private $nama_status_geotag;
+    public $nama_status_geotag;
 
     /**
      * @var Geotag[] Available geotags for this status_geotag.
@@ -50,20 +55,22 @@ class StatusGeotag
      * @ORM\OneToMany(targetEntity="Geotag", mappedBy="status_geotag")
      * @Groups({"status_geotag"})
      */
-    private $geotags;
+    public $geotags;
 
     public function __construct() {
         $this->geotags = new ArrayCollection();
-}
-
-    public function getId()
-    {
-        return $this->id;
     }
 
-    public function setId($id)
+
+
+    public function getStatusGeotagId()
     {
-        $this->id = $id;
+        return $this->status_geotag_id;
+    }
+
+    public function setStatusGeotagId($status_geotag_id)
+    {
+        $this->status_geotag_id = $status_geotag_id;
     }
 
     public function getNamaStatusGeotag()

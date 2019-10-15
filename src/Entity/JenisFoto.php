@@ -13,13 +13,17 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * JenisFoto.
  *
  * @ORM\Entity
  * @ORM\Table(name="ref.jenis_foto")
- * @ApiResource(normalizationContext={"groups"={"jenis_foto"}})
+ * @ApiResource(
+ *     normalizationContext={"groups"={"get", "jenis_foto"}},
+ *     denormalizationContext={"groups"={"post"}}
+ * )
  * @ApiFilter(OrderFilter::class, properties={"jenis_foto_id", "nama_jenis_foto", "instruksi", "status_isian"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"jenis_foto_id":"exact", "nama_jenis_foto":"partial", "instruksi":"partial", "status_isian":"exact"})
  */
@@ -29,36 +33,37 @@ class JenisFoto
     /**
      * @var int
      *
+     * @ApiProperty(identifier=true)
      * @ORM\Id
      * @ORM\Column(name="jenis_foto_id", type="smallint")
      * @Assert\NotNull
-     * @Groups({"jenis_foto", "foto"})
+     * @Groups({"get", "post", "jenis_foto", "foto"})
      */
-    private $id;
+    public $jenis_foto_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama_jenis_foto", type="string", length=140,  nullable=true)
-     * @Groups({"jenis_foto", "foto"})
+     * @Groups({"get", "post", "jenis_foto", "foto"})
      */
-    private $nama_jenis_foto;
+    public $nama_jenis_foto;
 
     /**
      * @var string
      *
      * @ORM\Column(name="instruksi", type="text",  nullable=true)
-     * @Groups({"jenis_foto", "foto"})
+     * @Groups({"get", "post", "jenis_foto", "foto"})
      */
-    private $instruksi;
+    public $instruksi;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status_isian", type="integer",  nullable=true)
-     * @Groups({"jenis_foto", "foto"})
+     * @Groups({"get", "post", "jenis_foto", "foto"})
      */
-    private $status_isian;
+    public $status_isian;
 
     /**
      * @var Foto[] Available fotos for this jenis_foto.
@@ -66,20 +71,22 @@ class JenisFoto
      * @ORM\OneToMany(targetEntity="Foto", mappedBy="jenis_foto")
      * @Groups({"jenis_foto"})
      */
-    private $fotos;
+    public $fotos;
 
     public function __construct() {
         $this->fotos = new ArrayCollection();
-}
-
-    public function getId()
-    {
-        return $this->id;
     }
 
-    public function setId($id)
+
+
+    public function getJenisFotoId()
     {
-        $this->id = $id;
+        return $this->jenis_foto_id;
+    }
+
+    public function setJenisFotoId($jenis_foto_id)
+    {
+        $this->jenis_foto_id = $jenis_foto_id;
     }
 
     public function getNamaJenisFoto()

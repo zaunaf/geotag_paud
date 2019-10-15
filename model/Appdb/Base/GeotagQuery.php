@@ -30,7 +30,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildGeotagQuery orderByPetugasLink($order = Criteria::ASC) Order by the petugas_link column
  * @method     ChildGeotagQuery orderBySekolahLink($order = Criteria::ASC) Order by the sekolah_link column
  * @method     ChildGeotagQuery orderByTglPengiriman($order = Criteria::ASC) Order by the tgl_pengiriman column
- * @method     ChildGeotagQuery orderByStatusTag($order = Criteria::ASC) Order by the status_tag column
+ * @method     ChildGeotagQuery orderByStatusData($order = Criteria::ASC) Order by the status_data column
  *
  * @method     ChildGeotagQuery groupByGeotagId() Group by the geotag_id column
  * @method     ChildGeotagQuery groupBySekolahId() Group by the sekolah_id column
@@ -42,7 +42,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildGeotagQuery groupByPetugasLink() Group by the petugas_link column
  * @method     ChildGeotagQuery groupBySekolahLink() Group by the sekolah_link column
  * @method     ChildGeotagQuery groupByTglPengiriman() Group by the tgl_pengiriman column
- * @method     ChildGeotagQuery groupByStatusTag() Group by the status_tag column
+ * @method     ChildGeotagQuery groupByStatusData() Group by the status_data column
  *
  * @method     ChildGeotagQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildGeotagQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -97,7 +97,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildGeotag findOneByPetugasLink(string $petugas_link) Return the first ChildGeotag filtered by the petugas_link column
  * @method     ChildGeotag findOneBySekolahLink(string $sekolah_link) Return the first ChildGeotag filtered by the sekolah_link column
  * @method     ChildGeotag findOneByTglPengiriman(string $tgl_pengiriman) Return the first ChildGeotag filtered by the tgl_pengiriman column
- * @method     ChildGeotag findOneByStatusTag(int $status_tag) Return the first ChildGeotag filtered by the status_tag column *
+ * @method     ChildGeotag findOneByStatusData(int $status_data) Return the first ChildGeotag filtered by the status_data column *
 
  * @method     ChildGeotag requirePk($key, ConnectionInterface $con = null) Return the ChildGeotag by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildGeotag requireOne(ConnectionInterface $con = null) Return the first ChildGeotag matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -112,7 +112,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildGeotag requireOneByPetugasLink(string $petugas_link) Return the first ChildGeotag filtered by the petugas_link column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildGeotag requireOneBySekolahLink(string $sekolah_link) Return the first ChildGeotag filtered by the sekolah_link column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildGeotag requireOneByTglPengiriman(string $tgl_pengiriman) Return the first ChildGeotag filtered by the tgl_pengiriman column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildGeotag requireOneByStatusTag(int $status_tag) Return the first ChildGeotag filtered by the status_tag column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildGeotag requireOneByStatusData(int $status_data) Return the first ChildGeotag filtered by the status_data column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildGeotag[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildGeotag objects based on current ModelCriteria
  * @method     ChildGeotag[]|ObjectCollection findByGeotagId(string $geotag_id) Return ChildGeotag objects filtered by the geotag_id column
@@ -125,7 +125,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildGeotag[]|ObjectCollection findByPetugasLink(string $petugas_link) Return ChildGeotag objects filtered by the petugas_link column
  * @method     ChildGeotag[]|ObjectCollection findBySekolahLink(string $sekolah_link) Return ChildGeotag objects filtered by the sekolah_link column
  * @method     ChildGeotag[]|ObjectCollection findByTglPengiriman(string $tgl_pengiriman) Return ChildGeotag objects filtered by the tgl_pengiriman column
- * @method     ChildGeotag[]|ObjectCollection findByStatusTag(int $status_tag) Return ChildGeotag objects filtered by the status_tag column
+ * @method     ChildGeotag[]|ObjectCollection findByStatusData(int $status_data) Return ChildGeotag objects filtered by the status_data column
  * @method     ChildGeotag[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -224,7 +224,7 @@ abstract class GeotagQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT geotag_id, sekolah_id, status_geotag_id, pengguna_id, tgl_pengambilan, lintang, bujur, petugas_link, sekolah_link, tgl_pengiriman, status_tag FROM geotag WHERE geotag_id = :p0';
+        $sql = 'SELECT geotag_id, sekolah_id, status_geotag_id, pengguna_id, tgl_pengambilan, lintang, bujur, petugas_link, sekolah_link, tgl_pengiriman, status_data FROM geotag WHERE geotag_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_STR);
@@ -651,16 +651,16 @@ abstract class GeotagQuery extends ModelCriteria
     }
 
     /**
-     * Filter the query on the status_tag column
+     * Filter the query on the status_data column
      *
      * Example usage:
      * <code>
-     * $query->filterByStatusTag(1234); // WHERE status_tag = 1234
-     * $query->filterByStatusTag(array(12, 34)); // WHERE status_tag IN (12, 34)
-     * $query->filterByStatusTag(array('min' => 12)); // WHERE status_tag > 12
+     * $query->filterByStatusData(1234); // WHERE status_data = 1234
+     * $query->filterByStatusData(array(12, 34)); // WHERE status_data IN (12, 34)
+     * $query->filterByStatusData(array('min' => 12)); // WHERE status_data > 12
      * </code>
      *
-     * @param     mixed $statusTag The value to use as filter.
+     * @param     mixed $statusData The value to use as filter.
      *              Use scalar values for equality.
      *              Use array values for in_array() equivalent.
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
@@ -668,16 +668,16 @@ abstract class GeotagQuery extends ModelCriteria
      *
      * @return $this|ChildGeotagQuery The current query, for fluid interface
      */
-    public function filterByStatusTag($statusTag = null, $comparison = null)
+    public function filterByStatusData($statusData = null, $comparison = null)
     {
-        if (is_array($statusTag)) {
+        if (is_array($statusData)) {
             $useMinMax = false;
-            if (isset($statusTag['min'])) {
-                $this->addUsingAlias(GeotagTableMap::COL_STATUS_TAG, $statusTag['min'], Criteria::GREATER_EQUAL);
+            if (isset($statusData['min'])) {
+                $this->addUsingAlias(GeotagTableMap::COL_STATUS_DATA, $statusData['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
-            if (isset($statusTag['max'])) {
-                $this->addUsingAlias(GeotagTableMap::COL_STATUS_TAG, $statusTag['max'], Criteria::LESS_EQUAL);
+            if (isset($statusData['max'])) {
+                $this->addUsingAlias(GeotagTableMap::COL_STATUS_DATA, $statusData['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -688,7 +688,7 @@ abstract class GeotagQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(GeotagTableMap::COL_STATUS_TAG, $statusTag, $comparison);
+        return $this->addUsingAlias(GeotagTableMap::COL_STATUS_DATA, $statusData, $comparison);
     }
 
     /**

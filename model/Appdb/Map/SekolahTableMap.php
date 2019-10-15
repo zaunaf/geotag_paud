@@ -374,11 +374,11 @@ class SekolahTableMap extends TableMap
         $this->addColumn('npwp', 'Npwp', 'CHAR', false, 15, null);
         $this->addColumn('nm_wp', 'NmWp', 'VARCHAR', false, 100, null);
         $this->addColumn('flag', 'Flag', 'CHAR', false, 3, null);
-        $this->addColumn('create_date', 'CreateDate', 'TIMESTAMP', true, 16, null);
-        $this->addColumn('last_update', 'LastUpdate', 'TIMESTAMP', true, 16, null);
-        $this->addColumn('soft_delete', 'SoftDelete', 'NUMERIC', true, 3, null);
-        $this->addColumn('last_sync', 'LastSync', 'TIMESTAMP', true, 16, null);
-        $this->addColumn('updater_id', 'UpdaterId', 'VARCHAR', true, 36, null);
+        $this->addColumn('create_date', 'CreateDate', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('last_update', 'LastUpdate', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('soft_delete', 'SoftDelete', 'NUMERIC', false, 3, null);
+        $this->addColumn('last_sync', 'LastSync', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('updater_id', 'UpdaterId', 'VARCHAR', false, 36, null);
     } // initialize()
 
     /**

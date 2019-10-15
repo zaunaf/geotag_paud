@@ -122,9 +122,9 @@ class GeotagTableMap extends TableMap
     const COL_TGL_PENGIRIMAN = 'geotag.tgl_pengiriman';
 
     /**
-     * the column name for the status_tag field
+     * the column name for the status_data field
      */
-    const COL_STATUS_TAG = 'geotag.status_tag';
+    const COL_STATUS_DATA = 'geotag.status_data';
 
     /**
      * The default string format for model objects of the related table
@@ -138,10 +138,10 @@ class GeotagTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('GeotagId', 'SekolahId', 'StatusGeotagId', 'PenggunaId', 'TglPengambilan', 'Lintang', 'Bujur', 'PetugasLink', 'SekolahLink', 'TglPengiriman', 'StatusTag', ),
-        self::TYPE_CAMELNAME     => array('geotagId', 'sekolahId', 'statusGeotagId', 'penggunaId', 'tglPengambilan', 'lintang', 'bujur', 'petugasLink', 'sekolahLink', 'tglPengiriman', 'statusTag', ),
-        self::TYPE_COLNAME       => array(GeotagTableMap::COL_GEOTAG_ID, GeotagTableMap::COL_SEKOLAH_ID, GeotagTableMap::COL_STATUS_GEOTAG_ID, GeotagTableMap::COL_PENGGUNA_ID, GeotagTableMap::COL_TGL_PENGAMBILAN, GeotagTableMap::COL_LINTANG, GeotagTableMap::COL_BUJUR, GeotagTableMap::COL_PETUGAS_LINK, GeotagTableMap::COL_SEKOLAH_LINK, GeotagTableMap::COL_TGL_PENGIRIMAN, GeotagTableMap::COL_STATUS_TAG, ),
-        self::TYPE_FIELDNAME     => array('geotag_id', 'sekolah_id', 'status_geotag_id', 'pengguna_id', 'tgl_pengambilan', 'lintang', 'bujur', 'petugas_link', 'sekolah_link', 'tgl_pengiriman', 'status_tag', ),
+        self::TYPE_PHPNAME       => array('GeotagId', 'SekolahId', 'StatusGeotagId', 'PenggunaId', 'TglPengambilan', 'Lintang', 'Bujur', 'PetugasLink', 'SekolahLink', 'TglPengiriman', 'StatusData', ),
+        self::TYPE_CAMELNAME     => array('geotagId', 'sekolahId', 'statusGeotagId', 'penggunaId', 'tglPengambilan', 'lintang', 'bujur', 'petugasLink', 'sekolahLink', 'tglPengiriman', 'statusData', ),
+        self::TYPE_COLNAME       => array(GeotagTableMap::COL_GEOTAG_ID, GeotagTableMap::COL_SEKOLAH_ID, GeotagTableMap::COL_STATUS_GEOTAG_ID, GeotagTableMap::COL_PENGGUNA_ID, GeotagTableMap::COL_TGL_PENGAMBILAN, GeotagTableMap::COL_LINTANG, GeotagTableMap::COL_BUJUR, GeotagTableMap::COL_PETUGAS_LINK, GeotagTableMap::COL_SEKOLAH_LINK, GeotagTableMap::COL_TGL_PENGIRIMAN, GeotagTableMap::COL_STATUS_DATA, ),
+        self::TYPE_FIELDNAME     => array('geotag_id', 'sekolah_id', 'status_geotag_id', 'pengguna_id', 'tgl_pengambilan', 'lintang', 'bujur', 'petugas_link', 'sekolah_link', 'tgl_pengiriman', 'status_data', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
     );
 
@@ -152,10 +152,10 @@ class GeotagTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('GeotagId' => 0, 'SekolahId' => 1, 'StatusGeotagId' => 2, 'PenggunaId' => 3, 'TglPengambilan' => 4, 'Lintang' => 5, 'Bujur' => 6, 'PetugasLink' => 7, 'SekolahLink' => 8, 'TglPengiriman' => 9, 'StatusTag' => 10, ),
-        self::TYPE_CAMELNAME     => array('geotagId' => 0, 'sekolahId' => 1, 'statusGeotagId' => 2, 'penggunaId' => 3, 'tglPengambilan' => 4, 'lintang' => 5, 'bujur' => 6, 'petugasLink' => 7, 'sekolahLink' => 8, 'tglPengiriman' => 9, 'statusTag' => 10, ),
-        self::TYPE_COLNAME       => array(GeotagTableMap::COL_GEOTAG_ID => 0, GeotagTableMap::COL_SEKOLAH_ID => 1, GeotagTableMap::COL_STATUS_GEOTAG_ID => 2, GeotagTableMap::COL_PENGGUNA_ID => 3, GeotagTableMap::COL_TGL_PENGAMBILAN => 4, GeotagTableMap::COL_LINTANG => 5, GeotagTableMap::COL_BUJUR => 6, GeotagTableMap::COL_PETUGAS_LINK => 7, GeotagTableMap::COL_SEKOLAH_LINK => 8, GeotagTableMap::COL_TGL_PENGIRIMAN => 9, GeotagTableMap::COL_STATUS_TAG => 10, ),
-        self::TYPE_FIELDNAME     => array('geotag_id' => 0, 'sekolah_id' => 1, 'status_geotag_id' => 2, 'pengguna_id' => 3, 'tgl_pengambilan' => 4, 'lintang' => 5, 'bujur' => 6, 'petugas_link' => 7, 'sekolah_link' => 8, 'tgl_pengiriman' => 9, 'status_tag' => 10, ),
+        self::TYPE_PHPNAME       => array('GeotagId' => 0, 'SekolahId' => 1, 'StatusGeotagId' => 2, 'PenggunaId' => 3, 'TglPengambilan' => 4, 'Lintang' => 5, 'Bujur' => 6, 'PetugasLink' => 7, 'SekolahLink' => 8, 'TglPengiriman' => 9, 'StatusData' => 10, ),
+        self::TYPE_CAMELNAME     => array('geotagId' => 0, 'sekolahId' => 1, 'statusGeotagId' => 2, 'penggunaId' => 3, 'tglPengambilan' => 4, 'lintang' => 5, 'bujur' => 6, 'petugasLink' => 7, 'sekolahLink' => 8, 'tglPengiriman' => 9, 'statusData' => 10, ),
+        self::TYPE_COLNAME       => array(GeotagTableMap::COL_GEOTAG_ID => 0, GeotagTableMap::COL_SEKOLAH_ID => 1, GeotagTableMap::COL_STATUS_GEOTAG_ID => 2, GeotagTableMap::COL_PENGGUNA_ID => 3, GeotagTableMap::COL_TGL_PENGAMBILAN => 4, GeotagTableMap::COL_LINTANG => 5, GeotagTableMap::COL_BUJUR => 6, GeotagTableMap::COL_PETUGAS_LINK => 7, GeotagTableMap::COL_SEKOLAH_LINK => 8, GeotagTableMap::COL_TGL_PENGIRIMAN => 9, GeotagTableMap::COL_STATUS_DATA => 10, ),
+        self::TYPE_FIELDNAME     => array('geotag_id' => 0, 'sekolah_id' => 1, 'status_geotag_id' => 2, 'pengguna_id' => 3, 'tgl_pengambilan' => 4, 'lintang' => 5, 'bujur' => 6, 'petugas_link' => 7, 'sekolah_link' => 8, 'tgl_pengiriman' => 9, 'status_data' => 10, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
     );
 
@@ -186,7 +186,7 @@ class GeotagTableMap extends TableMap
         $this->addColumn('petugas_link', 'PetugasLink', 'CHAR', false, 16, null);
         $this->addColumn('sekolah_link', 'SekolahLink', 'CHAR', false, 16, null);
         $this->addColumn('tgl_pengiriman', 'TglPengiriman', 'TIMESTAMP', false, 16, null);
-        $this->addColumn('status_tag', 'StatusTag', 'SMALLINT', false, 2, null);
+        $this->addColumn('status_data', 'StatusData', 'SMALLINT', false, 2, null);
     } // initialize()
 
     /**
@@ -368,7 +368,7 @@ class GeotagTableMap extends TableMap
             $criteria->addSelectColumn(GeotagTableMap::COL_PETUGAS_LINK);
             $criteria->addSelectColumn(GeotagTableMap::COL_SEKOLAH_LINK);
             $criteria->addSelectColumn(GeotagTableMap::COL_TGL_PENGIRIMAN);
-            $criteria->addSelectColumn(GeotagTableMap::COL_STATUS_TAG);
+            $criteria->addSelectColumn(GeotagTableMap::COL_STATUS_DATA);
         } else {
             $criteria->addSelectColumn($alias . '.geotag_id');
             $criteria->addSelectColumn($alias . '.sekolah_id');
@@ -380,7 +380,7 @@ class GeotagTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.petugas_link');
             $criteria->addSelectColumn($alias . '.sekolah_link');
             $criteria->addSelectColumn($alias . '.tgl_pengiriman');
-            $criteria->addSelectColumn($alias . '.status_tag');
+            $criteria->addSelectColumn($alias . '.status_data');
         }
     }
 

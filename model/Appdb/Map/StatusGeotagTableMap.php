@@ -132,7 +132,7 @@ class StatusGeotagTableMap extends TableMap
         $this->setUseIdGenerator(false);
         // columns
         $this->addPrimaryKey('status_geotag_id', 'StatusGeotagId', 'SMALLINT', true, 2, null);
-        $this->addColumn('nama_status_geotag', 'NamaStatusGeotag', 'VARCHAR', false, 20, null);
+        $this->addColumn('nama_status_geotag', 'NamaStatusGeotag', 'VARCHAR', false, 80, null);
     } // initialize()
 
     /**

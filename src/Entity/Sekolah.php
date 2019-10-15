@@ -13,13 +13,17 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * Sekolah.
  *
  * @ORM\Entity
  * @ORM\Table(name="sekolah")
- * @ApiResource(normalizationContext={"groups"={"get"}})
+ * @ApiResource(
+ *     normalizationContext={"groups"={"get", "sekolah"}},
+ *     denormalizationContext={"groups"={"post"}}
+ * )
  * @ApiFilter(OrderFilter::class, properties={"nama", "nama_nomenklatur", "nss", "npsn", "bentuk_pendidikan_id", "alamat_jalan", "rt", "rw", "nama_dusun", "desa_kelurahan", "kode_wilayah", "kode_pos", "lintang", "bujur", "nomor_telepon", "nomor_fax", "email", "website", "kebutuhan_khusus_id", "status_sekolah", "sk_pendirian_sekolah", "status_kepemilikan_id", "yayasan_id", "sk_izin_operasional", "no_rekening", "nama_bank", "cabang_kcp_unit", "rekening_atas_nama", "mbs", "luas_tanah_milik", "luas_tanah_bukan_milik", "kode_registrasi", "npwp", "nm_wp", "flag", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(SearchFilter::class, properties={"nama":"partial", "nama_nomenklatur":"partial", "nss":"partial", "npsn":"partial", "bentuk_pendidikan_id":"exact", "alamat_jalan":"partial", "rt":"exact", "rw":"exact", "nama_dusun":"partial", "desa_kelurahan":"partial", "kode_wilayah":"partial", "kode_pos":"partial", "lintang":"exact", "bujur":"exact", "nomor_telepon":"partial", "nomor_fax":"partial", "email":"partial", "website":"partial", "kebutuhan_khusus_id":"exact", "status_sekolah":"exact", "sk_pendirian_sekolah":"partial", "status_kepemilikan_id":"exact", "yayasan_id":"partial", "sk_izin_operasional":"partial", "no_rekening":"partial", "nama_bank":"partial", "cabang_kcp_unit":"partial", "rekening_atas_nama":"partial", "mbs":"exact", "luas_tanah_milik":"exact", "luas_tanah_bukan_milik":"exact", "kode_registrasi":"exact", "npwp":"partial", "nm_wp":"partial", "flag":"partial", "soft_delete":"exact", "updater_id":"partial"})
  */
@@ -29,18 +33,20 @@ class Sekolah
     /**
      * @var uuid
      *
+     * @ApiProperty(identifier=true)
      * @ORM\Id
      * @ORM\Column(name="sekolah_id", type="guid")
-     * @ORM\GeneratedValue(strategy="UUID")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
-    public $id;
+    public $sekolah_id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nama", type="string", length=100)
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nama;
 
@@ -48,7 +54,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nama_nomenklatur", type="string", length=100,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nama_nomenklatur;
 
@@ -56,7 +62,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nss", type="string", length=12,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nss;
 
@@ -64,15 +70,16 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="npsn", type="string", length=8,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $npsn;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="bentuk_pendidikan_id", type="integer")
-     * @Groups({"get"})
+     * @ORM\Column(name="bentuk_pendidikan_id", type="smallint")
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $bentuk_pendidikan_id;
 
@@ -80,7 +87,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="alamat_jalan", type="string", length=80)
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $alamat_jalan;
 
@@ -88,7 +96,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="rt", type="string",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $rt;
 
@@ -96,7 +104,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="rw", type="string",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $rw;
 
@@ -104,7 +112,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nama_dusun", type="string", length=60,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nama_dusun;
 
@@ -112,7 +120,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="desa_kelurahan", type="string", length=60)
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $desa_kelurahan;
 
@@ -120,7 +129,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="kode_wilayah", type="string", length=8)
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $kode_wilayah;
 
@@ -128,7 +138,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="kode_pos", type="string", length=5,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $kode_pos;
 
@@ -136,7 +146,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="lintang", type="string",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $lintang;
 
@@ -144,7 +154,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="bujur", type="string",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $bujur;
 
@@ -152,7 +162,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nomor_telepon", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nomor_telepon;
 
@@ -160,7 +170,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nomor_fax", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nomor_fax;
 
@@ -168,7 +178,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=60,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $email;
 
@@ -176,7 +186,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=100,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $website;
 
@@ -184,7 +194,8 @@ class Sekolah
      * @var int
      *
      * @ORM\Column(name="kebutuhan_khusus_id", type="integer")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $kebutuhan_khusus_id;
 
@@ -192,7 +203,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="status_sekolah", type="string")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $status_sekolah;
 
@@ -200,7 +212,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="sk_pendirian_sekolah", type="string", length=80,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $sk_pendirian_sekolah;
 
@@ -208,7 +220,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="tanggal_sk_pendirian", type="datetime",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $tanggal_sk_pendirian;
 
@@ -216,7 +228,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="status_kepemilikan_id", type="string")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $status_kepemilikan_id;
 
@@ -224,7 +237,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="yayasan_id", type="string", length=36,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $yayasan_id;
 
@@ -232,7 +245,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="sk_izin_operasional", type="string", length=80,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $sk_izin_operasional;
 
@@ -240,7 +253,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="tanggal_sk_izin_operasional", type="datetime",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $tanggal_sk_izin_operasional;
 
@@ -248,7 +261,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="no_rekening", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $no_rekening;
 
@@ -256,7 +269,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nama_bank", type="string", length=20,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nama_bank;
 
@@ -264,7 +277,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="cabang_kcp_unit", type="string", length=60,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $cabang_kcp_unit;
 
@@ -272,7 +285,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="rekening_atas_nama", type="string", length=50,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $rekening_atas_nama;
 
@@ -280,7 +293,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="mbs", type="string")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $mbs;
 
@@ -288,7 +302,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="luas_tanah_milik", type="string")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $luas_tanah_milik;
 
@@ -296,7 +311,8 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="luas_tanah_bukan_milik", type="string")
-     * @Groups({"get"})
+     * @Assert\NotNull
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $luas_tanah_bukan_milik;
 
@@ -304,7 +320,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="kode_registrasi", type="bigint",  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $kode_registrasi;
 
@@ -312,7 +328,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="npwp", type="string", length=15,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $npwp;
 
@@ -320,7 +336,7 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="nm_wp", type="string", length=100,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $nm_wp;
 
@@ -328,47 +344,47 @@ class Sekolah
      * @var string
      *
      * @ORM\Column(name="flag", type="string", length=3,  nullable=true)
-     * @Groups({"get"})
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $flag;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="create_date", type="datetime")
-     * @Groups({"get"})
+     * @ORM\Column(name="create_date", type="datetime",  nullable=true)
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $create_date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_update", type="datetime")
-     * @Groups({"get"})
+     * @ORM\Column(name="last_update", type="datetime",  nullable=true)
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $last_update;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="soft_delete", type="string")
-     * @Groups({"get"})
+     * @ORM\Column(name="soft_delete", type="string",  nullable=true)
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $soft_delete;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_sync", type="datetime")
-     * @Groups({"get"})
+     * @ORM\Column(name="last_sync", type="datetime",  nullable=true)
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $last_sync;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="updater_id", type="string", length=36)
-     * @Groups({"get"})
+     * @ORM\Column(name="updater_id", type="string", length=36,  nullable=true)
+     * @Groups({"get", "post", "sekolah", "foto", "geotag", "pengguna"})
      */
     public $updater_id;
 
@@ -400,16 +416,18 @@ class Sekolah
         $this->fotos = new ArrayCollection();
         $this->geotags = new ArrayCollection();
         $this->penggunas = new ArrayCollection();
-}
-
-    public function getId()
-    {
-        return $this->id;
     }
 
-    public function setId($id)
+
+
+    public function getSekolahId()
     {
-        $this->id = $id;
+        return $this->sekolah_id;
+    }
+
+    public function setSekolahId($sekolah_id)
+    {
+        $this->sekolah_id = $sekolah_id;
     }
 
     public function getNama()

@@ -59,7 +59,7 @@ class FotoTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 12;
+    const NUM_COLUMNS = 13;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class FotoTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 12;
+    const NUM_HYDRATE_COLUMNS = 13;
 
     /**
      * the column name for the foto_id field
@@ -132,6 +132,11 @@ class FotoTableMap extends TableMap
     const COL_TGL_PENGIRIMAN = 'foto.tgl_pengiriman';
 
     /**
+     * the column name for the status_data field
+     */
+    const COL_STATUS_DATA = 'foto.status_data';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -143,11 +148,11 @@ class FotoTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('FotoId', 'JenisFotoId', 'SekolahId', 'PenggunaId', 'Judul', 'TglPengambilan', 'TinggiPixel', 'LebarPixel', 'Ukuran', 'Lintang', 'Bujur', 'TglPengiriman', ),
-        self::TYPE_CAMELNAME     => array('fotoId', 'jenisFotoId', 'sekolahId', 'penggunaId', 'judul', 'tglPengambilan', 'tinggiPixel', 'lebarPixel', 'ukuran', 'lintang', 'bujur', 'tglPengiriman', ),
-        self::TYPE_COLNAME       => array(FotoTableMap::COL_FOTO_ID, FotoTableMap::COL_JENIS_FOTO_ID, FotoTableMap::COL_SEKOLAH_ID, FotoTableMap::COL_PENGGUNA_ID, FotoTableMap::COL_JUDUL, FotoTableMap::COL_TGL_PENGAMBILAN, FotoTableMap::COL_TINGGI_PIXEL, FotoTableMap::COL_LEBAR_PIXEL, FotoTableMap::COL_UKURAN, FotoTableMap::COL_LINTANG, FotoTableMap::COL_BUJUR, FotoTableMap::COL_TGL_PENGIRIMAN, ),
-        self::TYPE_FIELDNAME     => array('foto_id', 'jenis_foto_id', 'sekolah_id', 'pengguna_id', 'judul', 'tgl_pengambilan', 'tinggi_pixel', 'lebar_pixel', 'ukuran', 'lintang', 'bujur', 'tgl_pengiriman', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
+        self::TYPE_PHPNAME       => array('FotoId', 'JenisFotoId', 'SekolahId', 'PenggunaId', 'Judul', 'TglPengambilan', 'TinggiPixel', 'LebarPixel', 'Ukuran', 'Lintang', 'Bujur', 'TglPengiriman', 'StatusData', ),
+        self::TYPE_CAMELNAME     => array('fotoId', 'jenisFotoId', 'sekolahId', 'penggunaId', 'judul', 'tglPengambilan', 'tinggiPixel', 'lebarPixel', 'ukuran', 'lintang', 'bujur', 'tglPengiriman', 'statusData', ),
+        self::TYPE_COLNAME       => array(FotoTableMap::COL_FOTO_ID, FotoTableMap::COL_JENIS_FOTO_ID, FotoTableMap::COL_SEKOLAH_ID, FotoTableMap::COL_PENGGUNA_ID, FotoTableMap::COL_JUDUL, FotoTableMap::COL_TGL_PENGAMBILAN, FotoTableMap::COL_TINGGI_PIXEL, FotoTableMap::COL_LEBAR_PIXEL, FotoTableMap::COL_UKURAN, FotoTableMap::COL_LINTANG, FotoTableMap::COL_BUJUR, FotoTableMap::COL_TGL_PENGIRIMAN, FotoTableMap::COL_STATUS_DATA, ),
+        self::TYPE_FIELDNAME     => array('foto_id', 'jenis_foto_id', 'sekolah_id', 'pengguna_id', 'judul', 'tgl_pengambilan', 'tinggi_pixel', 'lebar_pixel', 'ukuran', 'lintang', 'bujur', 'tgl_pengiriman', 'status_data', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, )
     );
 
     /**
@@ -157,11 +162,11 @@ class FotoTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('FotoId' => 0, 'JenisFotoId' => 1, 'SekolahId' => 2, 'PenggunaId' => 3, 'Judul' => 4, 'TglPengambilan' => 5, 'TinggiPixel' => 6, 'LebarPixel' => 7, 'Ukuran' => 8, 'Lintang' => 9, 'Bujur' => 10, 'TglPengiriman' => 11, ),
-        self::TYPE_CAMELNAME     => array('fotoId' => 0, 'jenisFotoId' => 1, 'sekolahId' => 2, 'penggunaId' => 3, 'judul' => 4, 'tglPengambilan' => 5, 'tinggiPixel' => 6, 'lebarPixel' => 7, 'ukuran' => 8, 'lintang' => 9, 'bujur' => 10, 'tglPengiriman' => 11, ),
-        self::TYPE_COLNAME       => array(FotoTableMap::COL_FOTO_ID => 0, FotoTableMap::COL_JENIS_FOTO_ID => 1, FotoTableMap::COL_SEKOLAH_ID => 2, FotoTableMap::COL_PENGGUNA_ID => 3, FotoTableMap::COL_JUDUL => 4, FotoTableMap::COL_TGL_PENGAMBILAN => 5, FotoTableMap::COL_TINGGI_PIXEL => 6, FotoTableMap::COL_LEBAR_PIXEL => 7, FotoTableMap::COL_UKURAN => 8, FotoTableMap::COL_LINTANG => 9, FotoTableMap::COL_BUJUR => 10, FotoTableMap::COL_TGL_PENGIRIMAN => 11, ),
-        self::TYPE_FIELDNAME     => array('foto_id' => 0, 'jenis_foto_id' => 1, 'sekolah_id' => 2, 'pengguna_id' => 3, 'judul' => 4, 'tgl_pengambilan' => 5, 'tinggi_pixel' => 6, 'lebar_pixel' => 7, 'ukuran' => 8, 'lintang' => 9, 'bujur' => 10, 'tgl_pengiriman' => 11, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
+        self::TYPE_PHPNAME       => array('FotoId' => 0, 'JenisFotoId' => 1, 'SekolahId' => 2, 'PenggunaId' => 3, 'Judul' => 4, 'TglPengambilan' => 5, 'TinggiPixel' => 6, 'LebarPixel' => 7, 'Ukuran' => 8, 'Lintang' => 9, 'Bujur' => 10, 'TglPengiriman' => 11, 'StatusData' => 12, ),
+        self::TYPE_CAMELNAME     => array('fotoId' => 0, 'jenisFotoId' => 1, 'sekolahId' => 2, 'penggunaId' => 3, 'judul' => 4, 'tglPengambilan' => 5, 'tinggiPixel' => 6, 'lebarPixel' => 7, 'ukuran' => 8, 'lintang' => 9, 'bujur' => 10, 'tglPengiriman' => 11, 'statusData' => 12, ),
+        self::TYPE_COLNAME       => array(FotoTableMap::COL_FOTO_ID => 0, FotoTableMap::COL_JENIS_FOTO_ID => 1, FotoTableMap::COL_SEKOLAH_ID => 2, FotoTableMap::COL_PENGGUNA_ID => 3, FotoTableMap::COL_JUDUL => 4, FotoTableMap::COL_TGL_PENGAMBILAN => 5, FotoTableMap::COL_TINGGI_PIXEL => 6, FotoTableMap::COL_LEBAR_PIXEL => 7, FotoTableMap::COL_UKURAN => 8, FotoTableMap::COL_LINTANG => 9, FotoTableMap::COL_BUJUR => 10, FotoTableMap::COL_TGL_PENGIRIMAN => 11, FotoTableMap::COL_STATUS_DATA => 12, ),
+        self::TYPE_FIELDNAME     => array('foto_id' => 0, 'jenis_foto_id' => 1, 'sekolah_id' => 2, 'pengguna_id' => 3, 'judul' => 4, 'tgl_pengambilan' => 5, 'tinggi_pixel' => 6, 'lebar_pixel' => 7, 'ukuran' => 8, 'lintang' => 9, 'bujur' => 10, 'tgl_pengiriman' => 11, 'status_data' => 12, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, )
     );
 
     /**
@@ -193,6 +198,7 @@ class FotoTableMap extends TableMap
         $this->addColumn('lintang', 'Lintang', 'NUMERIC', false, 13, null);
         $this->addColumn('bujur', 'Bujur', 'NUMERIC', false, 13, null);
         $this->addColumn('tgl_pengiriman', 'TglPengiriman', 'TIMESTAMP', false, 16, null);
+        $this->addColumn('status_data', 'StatusData', 'SMALLINT', false, 2, null);
     } // initialize()
 
     /**
@@ -376,6 +382,7 @@ class FotoTableMap extends TableMap
             $criteria->addSelectColumn(FotoTableMap::COL_LINTANG);
             $criteria->addSelectColumn(FotoTableMap::COL_BUJUR);
             $criteria->addSelectColumn(FotoTableMap::COL_TGL_PENGIRIMAN);
+            $criteria->addSelectColumn(FotoTableMap::COL_STATUS_DATA);
         } else {
             $criteria->addSelectColumn($alias . '.foto_id');
             $criteria->addSelectColumn($alias . '.jenis_foto_id');
@@ -389,6 +396,7 @@ class FotoTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.lintang');
             $criteria->addSelectColumn($alias . '.bujur');
             $criteria->addSelectColumn($alias . '.tgl_pengiriman');
+            $criteria->addSelectColumn($alias . '.status_data');
         }
     }
 

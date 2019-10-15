@@ -369,6 +369,34 @@ Appdb:
                 relatedColumnIsPrimaryKey: null
                 relatedTableHasCompositePrimaryKey: null
                 relatedType: null
+            status_data:
+                columnName: status_data
+                columnCcName: StatusData
+                columnHumanName: 'Status Data'
+                columnHeader: 'Status Data'
+                fieldLabel: 'Status Data'
+                nativeType: int
+                type: SMALLINT
+                length: 2
+                isUuid: false
+                isPrimaryKey: false
+                isForeignKey: false
+                isPrimaryString: false
+                isNotNull: false
+                isText: false
+                isLongText: false
+                isNumeric: true
+                isUsernameColumn: false
+                isPasswordColumn: false
+                valueSet: null
+                relatedTableName: null
+                relatedTableCcName: null
+                relatedTableFullName: null
+                relatedColumnName: null
+                relatedColumnCcName: null
+                relatedColumnIsPrimaryKey: null
+                relatedTableHasCompositePrimaryKey: null
+                relatedType: null
     geotag:
         databaseName: appdb
         databaseCcName: Appdb
@@ -378,7 +406,7 @@ Appdb:
         tableFullName: geotag
         tableType: data
         omClass: \Appdb\Geotag
-        rowCount: 0
+        rowCount: 4
         compositePk: false
         pkColumns: null
         displayField: petugas_link
@@ -683,12 +711,12 @@ Appdb:
                 relatedColumnIsPrimaryKey: null
                 relatedTableHasCompositePrimaryKey: null
                 relatedType: null
-            status_tag:
-                columnName: status_tag
-                columnCcName: StatusTag
-                columnHumanName: 'Status Tag'
-                columnHeader: 'Status Tag'
-                fieldLabel: 'Status Tag'
+            status_data:
+                columnName: status_data
+                columnCcName: StatusData
+                columnHumanName: 'Status Data'
+                columnHeader: 'Status Data'
+                fieldLabel: 'Status Data'
                 nativeType: int
                 type: SMALLINT
                 length: 2
@@ -720,7 +748,7 @@ Appdb:
         tableFullName: ref.jenis_foto
         tableType: reference
         omClass: \Appdb\JenisFoto
-        rowCount: 0
+        rowCount: 7
         compositePk: false
         pkColumns: null
         displayField: nama_jenis_foto
@@ -859,7 +887,7 @@ Appdb:
         tableFullName: pengguna
         tableType: data
         omClass: \Appdb\Pengguna
-        rowCount: 2
+        rowCount: 3
         compositePk: false
         pkColumns: null
         displayField: username
@@ -1515,7 +1543,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: false
@@ -1543,7 +1571,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: true
@@ -1571,7 +1599,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: false
@@ -1599,7 +1627,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: true
                 isLongText: false
                 isNumeric: false
@@ -1623,7 +1651,7 @@ Appdb:
         tableFullName: sekolah
         tableType: data
         omClass: \Appdb\Sekolah
-        rowCount: 2
+        rowCount: 3
         compositePk: false
         pkColumns: null
         displayField: nama
@@ -2728,7 +2756,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: false
@@ -2756,7 +2784,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: false
@@ -2784,7 +2812,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: true
@@ -2812,7 +2840,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: false
                 isLongText: false
                 isNumeric: false
@@ -2840,7 +2868,7 @@ Appdb:
                 isPrimaryKey: false
                 isForeignKey: false
                 isPrimaryString: false
-                isNotNull: true
+                isNotNull: false
                 isText: true
                 isLongText: false
                 isNumeric: false
@@ -2864,7 +2892,7 @@ Appdb:
         tableFullName: ref.status_geotag
         tableType: reference
         omClass: \Appdb\StatusGeotag
-        rowCount: 0
+        rowCount: 3
         compositePk: false
         pkColumns: null
         displayField: nama_status_geotag
@@ -2918,7 +2946,7 @@ Appdb:
                 fieldLabel: 'Nama Status Geotag'
                 nativeType: string
                 type: VARCHAR
-                length: 20
+                length: 80
                 isUuid: false
                 isPrimaryKey: false
                 isForeignKey: false
