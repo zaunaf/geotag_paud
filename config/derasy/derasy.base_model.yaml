@@ -406,7 +406,7 @@ Appdb:
         tableFullName: geotag
         tableType: data
         omClass: \Appdb\Geotag
-        rowCount: 4
+        rowCount: 0
         compositePk: false
         pkColumns: null
         displayField: petugas_link

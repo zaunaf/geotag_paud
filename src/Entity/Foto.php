@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
@@ -21,7 +22,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @ORM\Entity
  * @ORM\Table(name="foto")
  * @ApiResource(
- *     normalizationContext={"groups"={"get", "foto"}},
+ *     normalizationContext={"groups"={"get", "foto"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"post"}}
  * )
  * @ApiFilter(OrderFilter::class, properties={"jenis_foto_id", "judul", "tinggi_pixel", "lebar_pixel", "ukuran", "lintang", "bujur", "status_data"}, arguments={"orderParameterName"="order"})
@@ -47,6 +48,7 @@ class Foto
      * @ORM\ManyToOne(targetEntity="JenisFoto", inversedBy="fotos")
      * @ORM\JoinColumn(name="jenis_foto_id", referencedColumnName="jenis_foto_id")
      * @Groups({"get", "post", "foto"})
+     * @MaxDepth(1)
      */
     public $jenis_foto;
 
@@ -56,6 +58,7 @@ class Foto
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="fotos")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id")
      * @Groups({"get", "post", "foto"})
+     * @MaxDepth(1)
      */
     public $sekolah;
 
@@ -65,6 +68,7 @@ class Foto
      * @ORM\ManyToOne(targetEntity="Pengguna", inversedBy="fotos")
      * @ORM\JoinColumn(name="pengguna_id", referencedColumnName="pengguna_id")
      * @Groups({"get", "post", "foto"})
+     * @MaxDepth(1)
      */
     public $pengguna;
 

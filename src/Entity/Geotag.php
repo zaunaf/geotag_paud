@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
@@ -21,7 +22,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @ORM\Entity
  * @ORM\Table(name="geotag")
  * @ApiResource(
- *     normalizationContext={"groups"={"get", "geotag"}},
+ *     normalizationContext={"groups"={"get", "geotag"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"post"}}
  * )
  * @ApiFilter(OrderFilter::class, properties={"status_geotag_id", "lintang", "bujur", "petugas_link", "sekolah_link", "status_data"}, arguments={"orderParameterName"="order"})
@@ -47,6 +48,7 @@ class Geotag
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="geotags")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id")
      * @Groups({"get", "post", "geotag"})
+     * @MaxDepth(1)
      */
     public $sekolah;
 
@@ -56,6 +58,7 @@ class Geotag
      * @ORM\ManyToOne(targetEntity="StatusGeotag", inversedBy="geotags")
      * @ORM\JoinColumn(name="status_geotag_id", referencedColumnName="status_geotag_id")
      * @Groups({"get", "post", "geotag"})
+     * @MaxDepth(1)
      */
     public $status_geotag;
 
@@ -65,6 +68,7 @@ class Geotag
      * @ORM\ManyToOne(targetEntity="Pengguna", inversedBy="geotags")
      * @ORM\JoinColumn(name="pengguna_id", referencedColumnName="pengguna_id")
      * @Groups({"get", "post", "geotag"})
+     * @MaxDepth(1)
      */
     public $pengguna;
 

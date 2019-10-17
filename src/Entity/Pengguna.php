@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,7 +23,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="pengguna")
  * @ApiResource(
- *     normalizationContext={"groups"={"get", "pengguna"}},
+ *     normalizationContext={"groups"={"get", "pengguna"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"post"}}
  * )
  * @ApiFilter(OrderFilter::class, properties={"username", "password", "nama", "nip_nim", "jabatan_lembaga", "ym", "skype", "alamat", "kode_wilayah", "no_telepon", "no_hp", "aktif", "ptk_id", "peran_id", "lembaga_id", "yayasan_id", "la_id", "dudi_id", "roles", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})
@@ -52,6 +53,7 @@ class Pengguna implements UserInterface, \Serializable
      * @ORM\ManyToOne(targetEntity="Sekolah", inversedBy="penggunas")
      * @ORM\JoinColumn(name="sekolah_id", referencedColumnName="sekolah_id",  nullable=true)
      * @Groups({"get", "post", "pengguna"})
+     * @MaxDepth(1)
      */
     public $sekolah;
 

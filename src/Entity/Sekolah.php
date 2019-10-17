@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
@@ -21,7 +22,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @ORM\Entity
  * @ORM\Table(name="sekolah")
  * @ApiResource(
- *     normalizationContext={"groups"={"get", "sekolah"}},
+ *     normalizationContext={"groups"={"get", "sekolah"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"post"}}
  * )
  * @ApiFilter(OrderFilter::class, properties={"nama", "nama_nomenklatur", "nss", "npsn", "bentuk_pendidikan_id", "alamat_jalan", "rt", "rw", "nama_dusun", "desa_kelurahan", "kode_wilayah", "kode_pos", "lintang", "bujur", "nomor_telepon", "nomor_fax", "email", "website", "kebutuhan_khusus_id", "status_sekolah", "sk_pendirian_sekolah", "status_kepemilikan_id", "yayasan_id", "sk_izin_operasional", "no_rekening", "nama_bank", "cabang_kcp_unit", "rekening_atas_nama", "mbs", "luas_tanah_milik", "luas_tanah_bukan_milik", "kode_registrasi", "npwp", "nm_wp", "flag", "soft_delete", "updater_id"}, arguments={"orderParameterName"="order"})

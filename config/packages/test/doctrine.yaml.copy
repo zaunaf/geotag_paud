@@ -8,16 +8,11 @@ doctrine:
             # charset: utf8mb4
             # collate: utf8mb4_unicode_ci
         # url: '%env(DATABASE_URL)%'
-        # driver: 'pdo_sqlsrv'
-        # driver: 'pdo_sqlsrv'
-        driver: 'pdo_pgsql'
-        server_version: '9.3'
-        charset: 'utf8'
-        host: '127.0.0.1'
-        port: '5433'
+        driver: 'pdo_sqlsrv'
+        host: '10.18.2.3'
         dbname: 'geotag_paud'
-        user: 'postgres'
-        password: 'sarijati113'
+        user: 'sa'
+        password: '3d0mondostra\/4'
         types:
             datetime: App\Doctrine\Type\DateTime
     orm:

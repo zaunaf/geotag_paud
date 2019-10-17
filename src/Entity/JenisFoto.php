@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
@@ -21,7 +22,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @ORM\Entity
  * @ORM\Table(name="ref.jenis_foto")
  * @ApiResource(
- *     normalizationContext={"groups"={"get", "jenis_foto"}},
+ *     normalizationContext={"groups"={"get", "jenis_foto"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"post"}}
  * )
  * @ApiFilter(OrderFilter::class, properties={"jenis_foto_id", "nama_jenis_foto", "instruksi", "status_isian"}, arguments={"orderParameterName"="order"})
