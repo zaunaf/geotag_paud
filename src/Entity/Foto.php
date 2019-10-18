@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -19,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 /**
  * Foto.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FotoRepository")
  * @ORM\Table(name="foto")
  * @ApiResource(
  *     normalizationContext={"groups"={"get", "foto"}, "enable_max_depth"=true},
@@ -281,4 +282,5 @@ class Foto
     {
         $this->status_data = $status_data;
     }
+
 }

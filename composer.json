@@ -15,7 +15,8 @@
         "symfony/serializer-pack": "^1.0",
         "api-platform/api-pack": "^1.2",
         "lexik/jwt-authentication-bundle": "^2.6",
-        "vich/uploader-bundle": "^1.10"
+        "vich/uploader-bundle": "^1.10",
+        "ext-curl": "*"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",

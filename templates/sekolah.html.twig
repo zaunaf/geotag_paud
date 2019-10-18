@@ -1,0 +1,57 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}GeotagPAUD Result{% endblock %}
+
+{% block body %}
+    <h2>{{ sekolah.nama }}</h2>
+    <h3>Foto Terkirim</h3>
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Id</th>
+            <th>Jenis Foto/Judul</th>
+            <th>Tgl Pengambilan</th>
+            <th>Ukuran</th>
+            <th>Lintang</th>
+            <th>Bujur</th>
+        </tr></thead>
+        <tbody>
+        {% for foto in sekolah.fotos %}
+            <tr style="height: 100px">
+                <td data-label="id" style="background: url(/foto/{{ foto.getSekolah.sekolah_id }}/{{ foto.foto_id }}/thumbs) center left / 80px 80px no-repeat !important; padding-left:20px; width: 100px;">&nbsp;</td>
+                <td data-label="id"><a href="/foto/{{ foto.getSekolah.sekolah_id }}/{{ foto.foto_id }}/full">{{ foto.foto_id }}</td>
+                <td data-label="jenis_foto">{{ foto.getJenisFoto.getNamaJenisFoto }} - {{ foto.judul }}</a></td>
+                <td data-label="tgl_pengambilan">{{ foto.tgl_pengambilan|date('Y-m-d') }}</td>
+                <td data-label="ukuran">{{ foto.ukuran }}</td>
+                <td data-label="lintang">{{ foto.lintang }}</td>
+                <td data-label="bujur">{{ foto.bujur }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Geotag</h3>
+    <table class="ui celled table">
+        <thead>
+        <tr><th>Id</th>
+            <th>Status Geotag</th>
+            <th>Tgl Pengambilan</th>
+            <th>Lintang</th>
+            <th>Bujur</th>
+        </tr></thead>
+        <tbody>
+        {% for geotag in sekolah.geotags %}
+            <tr>
+                <td data-label="id">{{ geotag.geotag_id }}</td>
+                <td data-label="status_geotag">{{ geotag.getStatusGeotag.getNamaStatusGeotag }}</a></td>
+                <td data-label="tgl_pengambilan">{{ geotag.tgl_pengambilan|date('Y-m-d') }}</td>
+                <td data-label="lintang">{{ geotag.lintang }}</td>
+                <td data-label="bujur">{{ geotag.bujur }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

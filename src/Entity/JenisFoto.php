@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -19,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 /**
  * JenisFoto.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\JenisFotoRepository")
  * @ORM\Table(name="ref.jenis_foto")
  * @ApiResource(
  *     normalizationContext={"groups"={"get", "jenis_foto"}, "enable_max_depth"=true},
@@ -119,4 +120,21 @@ class JenisFoto
     {
         $this->status_isian = $status_isian;
     }
+
+
+    public function getFotos(): Collection
+    {
+        return $this->fotos;
+    }
+
+    public function addFoto(Foto $foto)
+    {
+        $this->fotos->add($foto);
+    }
+
+    public function removeFoto(Foto $foto)
+    {
+        $this->fotos->removeElement($foto);
+    }
+
 }

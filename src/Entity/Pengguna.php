@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -573,4 +574,37 @@ class Pengguna implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized, array('allowed_classes' => false));
     }
+
+
+    public function getFotos(): Collection
+    {
+        return $this->fotos;
+    }
+
+    public function addFoto(Foto $foto)
+    {
+        $this->fotos->add($foto);
+    }
+
+    public function removeFoto(Foto $foto)
+    {
+        $this->fotos->removeElement($foto);
+    }
+
+
+    public function getGeotags(): Collection
+    {
+        return $this->geotags;
+    }
+
+    public function addGeotag(Geotag $geotag)
+    {
+        $this->geotags->add($geotag);
+    }
+
+    public function removeGeotag(Geotag $geotag)
+    {
+        $this->geotags->removeElement($geotag);
+    }
+
 }

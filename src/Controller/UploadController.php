@@ -19,6 +19,8 @@ class UploadController extends AbstractController
      */
     function start(Request $request)
     {
+        $foto_id = "";
+
         try {
 
             // Path
@@ -72,6 +74,11 @@ class UploadController extends AbstractController
 
             // Check if it's legit
             if (move_uploaded_file($tmp_name, $uploadFilePath)) {
+                $sourceFilePath = realpath($uploadFolderPath) . DIRECTORY_SEPARATOR;
+                $sourceFileName = $finalFileName;
+                $thumbFileName = $foto_id . ".thm";
+                $thumbFilePath = realpath($uploadFolderPath) . DIRECTORY_SEPARATOR;
+                $this->makeThumb($sourceFilePath, $sourceFileName, $thumbFilePath, $thumbFileName, $thumbSize=100);
 
                 // Get FotoObject for uploading
                 $fotoObj = $this->getDoctrine()->getRepository(Foto::class)->find($foto_id);
@@ -86,14 +93,67 @@ class UploadController extends AbstractController
                 $em->flush();
 
                 // Return only code
-                return new JsonResponse(null, Response::HTTP_ACCEPTED);
+                return new JsonResponse(array("foto_id" => $foto_id), Response::HTTP_ACCEPTED);
 
             } else {
                 throw new \Exception("Kesalahan ketika move file dari temp ke sasaran..");
             }
 
         } catch (\Exception $e) {
-            return new JsonResponse(array("message" => "Error: " . $e->getMessage()), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return new JsonResponse(array("foto_id" => $foto_id, "message" => "Error: " . $e->getMessage()), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    function makeThumb( $srcPath, $srcFilename, $thumbPath, $thumbFilename, $thumbSize=100 ){
+
+        global $max_width, $max_height;
+        ini_set ('gd.jpeg_ignore_warning', 1);
+
+        /* Set Filenames */
+        $srcFile = $srcPath . DIRECTORY_SEPARATOR . $srcFilename;
+        $thumbFile = $thumbPath . DIRECTORY_SEPARATOR . $thumbFilename;
+
+        /* Determine the File Type */
+        $type = substr( $srcFilename , strrpos( $srcFilename , '.' )+1 );
+
+        /* Create the Source Image */
+        switch( $type ){
+            case 'jpg' : case 'jpeg' :
+            $src = imagecreatefromjpeg( $srcFile ); break;
+            case 'png' :
+                $src = imagecreatefrompng( $srcFile ); break;
+            case 'gif' :
+                $src = imagecreatefromgif( $srcFile ); break;
+        }
+
+        /* Determine the Image Dimensions */
+        $oldW = imagesx( $src );
+        $oldH = imagesy( $src );
+
+        /* Calculate the New Image Dimensions */
+        $limiting_dim = 0;
+        if( $oldH > $oldW ){
+            /* Portrait */
+            $limiting_dim = $oldW;
+        }else{
+            /* Landscape */
+            $limiting_dim = $oldH;
+        }
+        /* Create the New Image */
+        $new = imagecreatetruecolor( $thumbSize , $thumbSize );
+        /* Transcribe the Source Image into the New (Square) Image */
+        imagecopyresampled( $new , $src , 0 , 0 , ($oldW-$limiting_dim )/2 , ( $oldH-$limiting_dim )/2 , $thumbSize , $thumbSize , $limiting_dim , $limiting_dim );
+
+        switch( $type ){
+            case 'jpg' : case 'jpeg' :
+            $src = imagejpeg( $new , $thumbFile ); break;
+            case 'png' :
+                $src = imagepng( $new , $thumbFile ); break;
+            case 'gif' :
+                $src = imagegif( $new , $thumbFile ); break;
+        }
+
+        imagedestroy( $new );
+        // imagedestroy( $src );
     }
 }

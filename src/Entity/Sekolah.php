@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -19,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 /**
  * Sekolah.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\SekolahRepository")
  * @ORM\Table(name="sekolah")
  * @ApiResource(
  *     normalizationContext={"groups"={"get", "sekolah"}, "enable_max_depth"=true},
@@ -850,4 +851,53 @@ class Sekolah
     {
         $this->updater_id = $updater_id;
     }
+
+
+    public function getFotos(): Collection
+    {
+        return $this->fotos;
+    }
+
+    public function addFoto(Foto $foto)
+    {
+        $this->fotos->add($foto);
+    }
+
+    public function removeFoto(Foto $foto)
+    {
+        $this->fotos->removeElement($foto);
+    }
+
+
+    public function getGeotags(): Collection
+    {
+        return $this->geotags;
+    }
+
+    public function addGeotag(Geotag $geotag)
+    {
+        $this->geotags->add($geotag);
+    }
+
+    public function removeGeotag(Geotag $geotag)
+    {
+        $this->geotags->removeElement($geotag);
+    }
+
+
+    public function getPenggunas(): Collection
+    {
+        return $this->penggunas;
+    }
+
+    public function addPengguna(Pengguna $pengguna)
+    {
+        $this->penggunas->add($pengguna);
+    }
+
+    public function removePengguna(Pengguna $pengguna)
+    {
+        $this->penggunas->removeElement($pengguna);
+    }
+
 }

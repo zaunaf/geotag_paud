@@ -1,0 +1,27 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}GeotagPAUD Result{% endblock %}
+
+{% block body %}
+    <h2>Geotag Dapodik PAUD Dikmas</h2>
+    <h3>Daftar Sekolah Terdaftar pada Aplikasi Mobile Geotag</h3>
+    <table class="ui celled table">
+        <thead>
+        <tr><th>Sekolah</th>
+            <th>NPSN</th>
+            <th>Alamat</th>
+        </tr></thead>
+        <tbody>
+        {% for sekolah in sekolahs %}
+            <tr>
+                <td data-label="nama"><a href="/sekolah/{{ sekolah.sekolah_id }}">{{ sekolah.nama }}</a></td>
+                <td data-label="npsn">{{ sekolah.npsn }}</td>
+                <td data-label="alamat">{{ sekolah.alamat_jalan }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

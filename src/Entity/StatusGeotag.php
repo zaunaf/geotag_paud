@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Annotation\GeneratedValue;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -19,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 /**
  * StatusGeotag.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\StatusGeotagRepository")
  * @ORM\Table(name="ref.status_geotag")
  * @ApiResource(
  *     normalizationContext={"groups"={"get", "status_geotag"}, "enable_max_depth"=true},
@@ -83,4 +84,21 @@ class StatusGeotag
     {
         $this->nama_status_geotag = $nama_status_geotag;
     }
+
+
+    public function getGeotags(): Collection
+    {
+        return $this->geotags;
+    }
+
+    public function addGeotag(Geotag $geotag)
+    {
+        $this->geotags->add($geotag);
+    }
+
+    public function removeGeotag(Geotag $geotag)
+    {
+        $this->geotags->removeElement($geotag);
+    }
+
 }

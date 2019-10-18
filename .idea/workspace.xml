@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bc057fa-c4a2-4026-9b2a-1a10b3748fc6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/derasy/derasy.base_model.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/derasy/derasy.base_model.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Foto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Geotag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/JenisFoto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pengguna.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Sekolah.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StatusGeotag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Event/AuthenticationSuccessListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event/AuthenticationSuccessListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Foto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Foto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Geotag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Geotag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/JenisFoto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/JenisFoto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Pengguna.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pengguna.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Sekolah.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Sekolah.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/StatusGeotag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StatusGeotag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +194,7 @@
       <workItem from="1571032472548" duration="1531000" />
       <workItem from="1571034029261" duration="2146000" />
       <workItem from="1571104926471" duration="22288000" />
-      <workItem from="1571277260143" duration="5009000" />
+      <workItem from="1571277260143" duration="18356000" />
     </task>
     <servers />
   </component>
